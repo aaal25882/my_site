@@ -1,7 +1,7 @@
 // فقط Project URL و Publishable/anon key را قرار دهید.
 // هرگز service_role key یا Database Password را در این فایل نگذارید.
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
+const SUPABASE_URL = "https://iowhgknspzchsywanlrl.supabase.co/rest/v1/";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ajqhYBxbH25gvfg_L0O6Uw_KsvAmvwz";
 
 const isSupabaseConfigured =
   !SUPABASE_URL.includes("YOUR_") &&
