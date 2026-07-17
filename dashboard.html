@@ -1,18 +1,158 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>تکمیل حساب | خرید از چین</title>
-  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="css/auth.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پنل کاربری | خرید و حمل از چین</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
 </head>
-<body class="auth-page">
-<main class="auth-shell">
-  <section class="auth-info">
-    <p class="section-label">مرحله بعد</p>
-    <h1>حساب شما وارد سامانه شد</h1>
-    <p>در نسخه بعد، فرم تکمیل پروفایل خریدار یا مسافر و پنل سفارش‌ها در این صفحه قرار می‌گیرد.</p>
-    <a class="button secondary" href="china.html">بازگشت به صفحه سرویس</a>
-  </section>
-</main>
+<body class="dashboard-page" data-theme="light">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <a class="dashboard-brand" href="china.html">Aaal China</a>
+      <div class="sidebar-user">
+        <strong id="sidebar-name">کاربر</strong>
+        <span id="sidebar-role">در حال دریافت نقش...</span>
+      </div>
+      <nav id="dashboard-nav" class="dashboard-nav">
+        <button data-section="overview" class="active">نمای کلی</button>
+        <button data-section="profile">پروفایل</button>
+        <button data-section="orders" id="nav-orders">سفارش‌ها</button>
+        <button data-section="flights" id="nav-flights" hidden>پروازها</button>
+        <button data-section="admin" id="nav-admin" hidden>مدیریت سامانه</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="theme-toggle" class="sidebar-action" type="button">🌙 حالت تیره</button>
+        <button id="logout-button" class="sidebar-action danger" type="button">خروج از حساب</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div>
+          <p class="eyebrow">پنل کاربری</p>
+          <h1 id="page-title">نمای کلی</h1>
+        </div>
+        <div id="verification-chip" class="verification-chip">در حال بررسی</div>
+      </header>
+
+      <p id="dashboard-status" class="dashboard-message">در حال بارگذاری حساب...</p>
+
+      <section class="dashboard-section active" data-panel="overview">
+        <div class="welcome-card">
+          <div>
+            <p class="eyebrow">خوش آمدید</p>
+            <h2 id="welcome-name">کاربر عزیز</h2>
+            <p id="role-notice">اطلاعات حساب در حال دریافت است.</p>
+          </div>
+          <a href="china.html" class="dashboard-button secondary">مشاهده صفحه سرویس</a>
+        </div>
+        <div id="stats-grid" class="stats-grid"></div>
+        <div class="info-grid">
+          <article class="panel-card">
+            <h3>مراحل بعدی</h3>
+            <ul id="next-steps" class="clean-list"></ul>
+          </article>
+          <article class="panel-card">
+            <h3>راهنمای پنل</h3>
+            <p>ابتدا پروفایل خود را تکمیل کنید. سپس از بخش سفارش‌ها یا پروازها، اطلاعات موردنیاز را ثبت و پیگیری کنید.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" data-panel="profile">
+        <div class="section-heading"><div><p class="eyebrow">اطلاعات حساب</p><h2>تکمیل پروفایل</h2></div></div>
+        <form id="profile-form" class="panel-card dashboard-form">
+          <div class="form-grid">
+            <label>نام و نام خانوادگی<input id="profile-full-name" required></label>
+            <label>شماره تماس<input id="profile-phone" inputmode="tel"></label>
+            <label>شهر محل اقامت<input id="profile-city"></label>
+            <label class="full-width">درباره من<textarea id="profile-bio" rows="3"></textarea></label>
+          </div>
+          <div id="traveler-profile-fields" hidden>
+            <hr>
+            <h3>اطلاعات حمل‌کننده</h3>
+            <div class="form-grid">
+              <label>شهر محل اقامت در چین<input id="traveler-china-city"></label>
+              <label>دانشگاه یا محل فعالیت<input id="traveler-university"></label>
+              <label>ظرفیت معمول بار (کیلوگرم)<input id="traveler-capacity" type="number" min="0" step="0.1"></label>
+              <label>شناسه مدرک دانشجویی/هویتی<input id="traveler-student-ref"></label>
+              <label class="full-width">توضیحات تکمیلی<textarea id="traveler-notes" rows="3"></textarea></label>
+            </div>
+          </div>
+          <button class="dashboard-button primary" type="submit">ذخیره پروفایل</button>
+          <p id="profile-message" class="form-message"></p>
+        </form>
+      </section>
+
+      <section class="dashboard-section" data-panel="orders">
+        <div class="section-heading">
+          <div><p class="eyebrow">درخواست‌های خرید</p><h2 id="orders-title">سفارش‌های من</h2></div>
+          <button id="new-order-toggle" class="dashboard-button primary" type="button">ثبت سفارش جدید</button>
+        </div>
+        <div id="traveler-buyer-hint" class="hint-card" hidden>شما علاوه بر حمل کالا، می‌توانید مانند یک خریدار نیز سفارش شخصی ثبت کنید.</div>
+        <form id="order-form" class="panel-card dashboard-form collapsible" hidden>
+          <div class="form-grid">
+            <label>نام کالا<input id="order-title" required></label>
+            <label>لینک محصول<input id="order-url" type="url"></label>
+            <label>تعداد<input id="order-quantity" type="number" min="1" value="1" required></label>
+            <label>وزن تقریبی (کیلوگرم)<input id="order-weight" type="number" min="0" step="0.01"></label>
+            <label>رنگ<input id="order-color"></label>
+            <label>مدل<input id="order-model"></label>
+            <label>قیمت تقریبی<input id="order-price" type="number" min="0" step="0.01"></label>
+            <label>شهر تحویل در ایران<input id="order-destination"></label>
+            <label class="full-width">توضیحات<textarea id="order-notes" rows="3"></textarea></label>
+          </div>
+          <button class="dashboard-button primary" type="submit">ثبت سفارش</button>
+          <p id="order-message" class="form-message"></p>
+        </form>
+        <div id="orders-list" class="data-list"></div>
+      </section>
+
+      <section class="dashboard-section" data-panel="flights">
+        <div class="section-heading">
+          <div><p class="eyebrow">ظرفیت حمل</p><h2>پروازهای من</h2></div>
+          <button id="new-flight-toggle" class="dashboard-button primary" type="button">ثبت پرواز جدید</button>
+        </div>
+        <div id="flight-verification-warning" class="hint-card warning" hidden>ثبت پرواز پس از تأیید حساب حمل‌کننده فعال می‌شود.</div>
+        <form id="flight-form" class="panel-card dashboard-form collapsible" hidden>
+          <div class="form-grid">
+            <label>شهر مبدأ<input id="flight-origin" value="شانگهای" required></label>
+            <label>شهر مقصد<input id="flight-destination" value="تهران" required></label>
+            <label>تاریخ پرواز<input id="flight-departure" type="date" required></label>
+            <label>تاریخ رسیدن<input id="flight-arrival" type="date"></label>
+            <label>شرکت هواپیمایی<input id="flight-airline"></label>
+            <label>شماره پرواز<input id="flight-number"></label>
+            <label>ظرفیت کل (کیلوگرم)<input id="flight-capacity" type="number" min="0.1" step="0.1" required></label>
+            <label>ظرفیت آزاد (کیلوگرم)<input id="flight-available" type="number" min="0" step="0.1" required></label>
+            <label class="full-width">توضیحات<textarea id="flight-notes" rows="3"></textarea></label>
+          </div>
+          <button class="dashboard-button primary" type="submit">ثبت پرواز</button>
+          <p id="flight-message" class="form-message"></p>
+        </form>
+        <div id="flights-list" class="data-list"></div>
+      </section>
+
+      <section class="dashboard-section" data-panel="admin">
+        <div class="section-heading"><div><p class="eyebrow">مدیریت کل</p><h2>مدیریت سامانه</h2></div></div>
+        <div class="admin-tabs">
+          <button class="active" data-admin-tab="users">کاربران</button>
+          <button data-admin-tab="orders">سفارش‌ها</button>
+          <button data-admin-tab="flights">پروازها</button>
+        </div>
+        <div id="admin-users" class="admin-panel active"></div>
+        <div id="admin-orders" class="admin-panel"></div>
+        <div id="admin-flights" class="admin-panel"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
