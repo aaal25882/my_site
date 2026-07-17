@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="سامانه ثبت درخواست خرید از چین و همکاری با مسافران و دانشجویان تأییدشده">
+  <title>خرید از چین | امیرعلی ارجمند</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/china.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="china.html">خرید از چین</a>
+    <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" aria-label="منوی سرویس">
+      <a href="#how-it-works">نحوه کار</a>
+      <a href="#calculator">محاسبه سود</a>
+      <a href="#trust">اعتماد و امنیت</a>
+      <a href="index.html">درباره سازنده</a>
+      <a class="nav-login" href="auth.html">ورود / ثبت‌نام</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="china-hero">
+    <div class="container china-hero-grid">
+      <div>
+        <span class="service-badge">نسخه آزمایشی سامانه</span>
+        <h1>خرید از چین، با کمک مسافران و دانشجویان تأییدشده</h1>
+        <p>
+          خریدار درخواست کالای خود را ثبت می‌کند و مسافری که مسیر چین به ایران دارد،
+          با قیمت و زمان تحویل شفاف آن را می‌پذیرد.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="auth.html?role=buyer">ثبت درخواست خرید</a>
+          <a class="button secondary" href="auth.html?role=traveler">همکاری به‌عنوان مسافر</a>
+        </div>
+        <div class="trust-points">
+          <span>✓ احراز ایمیل یا گوگل</span>
+          <span>✓ تأیید دستی مسافران</span>
+          <span>✓ محاسبه شفاف کارمزد</span>
+        </div>
+      </div>
+      <aside class="route-card" aria-label="نمایش روند سفارش">
+        <div class="route-line"></div>
+        <div class="route-item active"><b>۱</b><span>ثبت درخواست کالا</span></div>
+        <div class="route-item"><b>۲</b><span>پیشنهاد مسافر تأییدشده</span></div>
+        <div class="route-item"><b>۳</b><span>خرید و ثبت فاکتور</span></div>
+        <div class="route-item"><b>۴</b><span>تحویل در ایران</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">فرآیند ساده و قابل پیگیری</p>
+          <h2 class="section-title">سامانه برای دو گروه ساخته می‌شود</h2>
+        </div>
+      </div>
+      <div class="role-grid">
+        <article class="role-card">
+          <span class="role-icon">خ</span>
+          <h3>خریدار</h3>
+          <p>لینک، مشخصات، تعداد، قیمت تقریبی و زمان موردنظر را ثبت می‌کند و پیشنهادهای مسافران را می‌بیند.</p>
+          <a href="auth.html?role=buyer">ساخت حساب خریدار ←</a>
+        </article>
+        <article class="role-card">
+          <span class="role-icon">م</span>
+          <h3>مسافر یا دانشجوی چین</h3>
+          <p>مسیر سفر و ظرفیت بار را ثبت می‌کند. پس از تأیید مدیریت، درخواست‌های مناسب را می‌پذیرد.</p>
+          <a href="auth.html?role=traveler">ثبت درخواست همکاری ←</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section calculator-section" id="calculator">
+    <div class="container calculator-layout">
+      <div>
+        <p class="section-label">کارمزد پویا</p>
+        <h2 class="section-title">۴ درصد همیشه منصفانه نیست</h2>
+        <p class="calculator-intro">
+          کارمزد پیشنهادی از بیشترین مقدار میان درصد ارزش کالا، سهم وزنی هزینه سفر
+          و حداقل کارمزد سفارش انتخاب می‌شود. این محاسبه فقط برآورد اولیه است.
+        </p>
+        <div class="formula-note">
+          <strong>منطق نسخه اولیه:</strong>
+          <code>کارمزد = بیشینه‌(۴٪ ارزش کالا، سهم وزنی هدف درآمد سفر، حداقل کارمزد)</code>
+        </div>
+      </div>
+
+      <form class="profit-calculator" id="profit-calculator">
+        <div class="field-grid">
+          <label>ارزش کالا (تومان)
+            <input id="product-price" type="number" min="0" step="100000" value="20000000" required>
+          </label>
+          <label>وزن قابل محاسبه کالا (کیلوگرم)
+            <input id="order-weight" type="number" min="0.1" step="0.1" value="2" required>
+          </label>
+          <label>هزینه رفت‌وبرگشت سفر (تومان)
+            <input id="ticket-cost" type="number" min="0" step="1000000" value="100000000" required>
+          </label>
+          <label>ظرفیت قابل استفاده بار (کیلوگرم)
+            <input id="usable-capacity" type="number" min="1" step="1" value="50" required>
+          </label>
+          <label>سهم هدف از جبران هزینه سفر
+            <select id="recovery-rate">
+              <option value="0.25">۲۵ درصد</option>
+              <option value="0.4" selected>۴۰ درصد</option>
+              <option value="0.6">۶۰ درصد</option>
+              <option value="1">۱۰۰ درصد</option>
+            </select>
+          </label>
+          <label>حداقل کارمزد سفارش (تومان)
+            <input id="minimum-fee" type="number" min="0" step="100000" value="500000" required>
+          </label>
+        </div>
+        <button class="button primary full-button" type="submit">محاسبه کارمزد پیشنهادی</button>
+
+        <div class="calculator-result" aria-live="polite">
+          <div><span>۴٪ ارزش کالا</span><strong id="percent-fee">—</strong></div>
+          <div><span>سهم وزنی هزینه سفر</span><strong id="weight-fee">—</strong></div>
+          <div class="recommended"><span>کارمزد پیشنهادی مسافر</span><strong id="recommended-fee">—</strong></div>
+          <small id="calculator-explanation"></small>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="trust">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">اعتماد و امنیت</p>
+          <h2 class="section-title">ورود معتبر، دسترسی محدود و تأیید مسافر</h2>
+        </div>
+      </div>
+      <div class="security-grid">
+        <article><b>ورود با گوگل یا ایمیل تأییدشده</b><p>حساب بدون تأیید هویت ارتباطی وارد چرخه سفارش نمی‌شود.</p></article>
+        <article><b>تأیید دستی مسافر</b><p>اطلاعات اقامت، دانشگاه و سفر پیش از امکان پذیرش سفارش بررسی می‌شود.</p></article>
+        <article><b>قوانین دسترسی Supabase</b><p>هر کاربر فقط اطلاعات مجاز و سفارش‌های مربوط به خودش را مشاهده می‌کند.</p></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <p>نسخه آزمایشی سامانه خرید از چین</p>
+    <a href="index.html">وب‌سایت شخصی امیرعلی ارجمند</a>
+  </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/profit-calculator.js"></script>
+</body>
+</html>

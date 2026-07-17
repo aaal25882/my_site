@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود و ثبت‌نام | خرید از چین</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+<main class="auth-shell">
+  <section class="auth-info">
+    <a class="back-link" href="china.html">→ بازگشت به سامانه</a>
+    <p class="section-label">حساب کاربری امن</p>
+    <h1>ورود یا ساخت حساب</h1>
+    <p>برای ثبت سفارش یا همکاری به‌عنوان مسافر، ابتدا حساب ارتباطی خود را تأیید کنید.</p>
+    <ul>
+      <li>ورود سریع با حساب Google</li>
+      <li>ثبت‌نام ایمیلی همراه با لینک تأیید</li>
+      <li>رمز عبور حداقل ۸ نویسه با عدد و حرف</li>
+    </ul>
+  </section>
+
+  <section class="auth-card">
+    <div class="auth-tabs" role="tablist">
+      <button type="button" class="active" data-tab="login">ورود</button>
+      <button type="button" data-tab="register">ثبت‌نام</button>
+    </div>
+
+    <button class="google-button" id="google-login" type="button">
+      <span>G</span> ادامه با حساب Google
+    </button>
+
+    <div class="divider"><span>یا با ایمیل</span></div>
+
+    <form id="login-form" class="auth-form active" data-panel="login" novalidate>
+      <label>ایمیل
+        <input id="login-email" type="email" autocomplete="email" required placeholder="name@example.com">
+      </label>
+      <label>رمز عبور
+        <input id="login-password" type="password" autocomplete="current-password" required placeholder="رمز عبور">
+      </label>
+      <button class="button primary full-button" type="submit">ورود به حساب</button>
+    </form>
+
+    <form id="register-form" class="auth-form" data-panel="register" novalidate>
+      <label>نام و نام خانوادگی
+        <input id="full-name" type="text" minlength="3" maxlength="80" required>
+      </label>
+      <label>ایمیل
+        <input id="register-email" type="email" autocomplete="email" required placeholder="name@example.com">
+      </label>
+      <label>نوع حساب
+        <select id="role" required>
+          <option value="">انتخاب کنید</option>
+          <option value="buyer">خریدار</option>
+          <option value="traveler">مسافر / دانشجوی چین</option>
+        </select>
+      </label>
+      <label>رمز عبور
+        <input id="register-password" type="password" autocomplete="new-password" minlength="8" required>
+      </label>
+      <div class="password-meter"><span id="password-meter-bar"></span></div>
+      <p class="field-help" id="password-help">حداقل ۸ نویسه، شامل حرف و عدد</p>
+      <label class="checkbox-label">
+        <input id="terms" type="checkbox" required>
+        <span>قوانین استفاده و سیاست حریم خصوصی را می‌پذیرم.</span>
+      </label>
+      <button class="button primary full-button" type="submit">ساخت حساب و ارسال ایمیل تأیید</button>
+    </form>
+
+    <div id="auth-message" class="auth-message" aria-live="polite"></div>
+    <p class="auth-warning">این نسخه تا زمان قراردادن اطلاعات Supabase در فایل تنظیمات، به بک‌اند متصل نیست.</p>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
