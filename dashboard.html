@@ -14,7 +14,12 @@
 <body class="dashboard-page">
   <div class="dashboard-layout">
     <aside class="dashboard-sidebar">
-      <a class="dashboard-brand" href="china.html">Aaal China</a>
+      <a class="dashboard-brand" href="index.html">Aaal China</a>
+      <nav class="site-shortcuts" aria-label="دسترسی به سایت">
+        <a href="index.html">صفحه اصلی</a>
+        <a href="china.html">سامانه خرید از چین</a>
+        <a href="dashboard.html" class="active">پنل کاربری</a>
+      </nav>
       <div class="sidebar-user">
         <strong id="sidebar-name">کاربر</strong>
         <span id="sidebar-role">در حال دریافت نقش...</span>
@@ -90,7 +95,20 @@
               <label>شهر محل اقامت در چین<input id="traveler-china-city"></label>
               <label>دانشگاه یا محل فعالیت<input id="traveler-university"></label>
               <label>ظرفیت معمول بار (کیلوگرم)<input id="traveler-capacity" type="number" min="0" step="0.1"></label>
-              <label>شناسه مدرک دانشجویی/هویتی<input id="traveler-student-ref"></label>
+              <label>نوع مدرک
+                <select id="traveler-document-type">
+                  <option value="student_card">کارت دانشجویی</option>
+                  <option value="passport">گذرنامه</option>
+                  <option value="residence_card">کارت اقامت</option>
+                  <option value="other">مدرک دیگر</option>
+                </select>
+              </label>
+              <label>شماره یا شناسه مدرک<input id="traveler-document-number" autocomplete="off"></label>
+              <label class="full-width document-upload-field">تصویر یا فایل مدرک
+                <input id="traveler-document-file" type="file" accept="image/jpeg,image/png,image/webp,application/pdf">
+                <small>فرمت مجاز: JPG، PNG، WEBP یا PDF — حداکثر ۵ مگابایت</small>
+                <div id="traveler-document-current" class="document-current" hidden></div>
+              </label>
               <label class="full-width">توضیحات تکمیلی<textarea id="traveler-notes" rows="3"></textarea></label>
             </div>
           </div>
