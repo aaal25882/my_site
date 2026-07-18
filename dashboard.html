@@ -7,10 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="js/theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
-<body class="dashboard-page" data-theme="light">
+<body class="dashboard-page">
   <div class="dashboard-layout">
     <aside class="dashboard-sidebar">
       <a class="dashboard-brand" href="china.html">Aaal China</a>
@@ -26,7 +27,6 @@
         <button data-section="admin" id="nav-admin" hidden>مدیریت سامانه</button>
       </nav>
       <div class="sidebar-footer">
-        <button id="theme-toggle" class="sidebar-action" type="button">🌙 حالت تیره</button>
         <button id="logout-button" class="sidebar-action danger" type="button">خروج از حساب</button>
       </div>
     </aside>
@@ -37,7 +37,17 @@
           <p class="eyebrow">پنل کاربری</p>
           <h1 id="page-title">نمای کلی</h1>
         </div>
-        <div id="verification-chip" class="verification-chip">در حال بررسی</div>
+        <div class="topbar-actions">
+          <label class="theme-picker" title="انتخاب حالت نمایش">
+          <span class="theme-picker-icon" aria-hidden="true">◐</span>
+          <select data-theme-control aria-label="انتخاب حالت نمایش">
+            <option value="auto">خودکار</option>
+            <option value="light">روشن</option>
+            <option value="dark">تیره</option>
+          </select>
+        </label>
+          <div id="verification-chip" class="verification-chip">در حال بررسی</div>
+        </div>
       </header>
 
       <p id="dashboard-status" class="dashboard-message">در حال بارگذاری حساب...</p>

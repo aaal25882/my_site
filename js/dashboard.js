@@ -51,22 +51,6 @@ function setupNavigation() {
   });
 }
 
-function setupTheme() {
-  const saved = localStorage.getItem("aaal-theme") || "light";
-  document.body.dataset.theme = saved;
-  updateThemeButton(saved);
-  $("#theme-toggle").addEventListener("click", () => {
-    const next = document.body.dataset.theme === "light" ? "dark" : "light";
-    document.body.dataset.theme = next;
-    localStorage.setItem("aaal-theme", next);
-    updateThemeButton(next);
-  });
-}
-
-function updateThemeButton(theme) {
-  $("#theme-toggle").textContent = theme === "light" ? "🌙 حالت تیره" : "☀️ حالت روشن";
-}
-
 async function loadSessionAndProfile() {
   if (!supabaseClient) throw new Error("اتصال Supabase تنظیم نشده است.");
 
@@ -373,7 +357,6 @@ function setupActions() {
 }
 
 async function init() {
-  setupTheme();
   setupNavigation();
   setupAdminTabs();
   setupActions();

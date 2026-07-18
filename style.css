@@ -483,3 +483,109 @@ a {
     text-align: center;
   }
 }
+
+/* Global three-mode theme system */
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --surface-soft: #eef2f8;
+  --text: #14213d;
+  --muted: #607089;
+  --primary: #4f5ee8;
+  --primary-hover: #3646d3;
+  --border: rgba(20, 33, 61, 0.12);
+  --shadow: 0 24px 60px rgba(30, 41, 59, 0.12);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #09111f;
+  --surface: #111c2f;
+  --surface-soft: #16233a;
+  --text: #f6f8fc;
+  --muted: #aab4c5;
+  --primary: #6f7cff;
+  --primary-hover: #8993ff;
+  --border: rgba(255, 255, 255, 0.09);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme="light"] body {
+  background:
+    radial-gradient(circle at top right, rgba(79, 94, 232, 0.10), transparent 30%),
+    var(--bg);
+}
+
+html[data-theme="light"] .site-header {
+  background: rgba(246, 248, 252, 0.84);
+}
+
+html[data-theme="dark"] .site-header {
+  background: rgba(9, 17, 31, 0.78);
+}
+
+html[data-theme="light"] .button.secondary,
+html[data-theme="light"] .calculator-result,
+html[data-theme="light"] .calculator-section {
+  background: rgba(20, 33, 61, 0.035);
+}
+
+html[data-theme="light"] .trust-points,
+html[data-theme="light"] .profit-calculator label {
+  color: var(--text);
+}
+
+html[data-theme="light"] .service-badge,
+html[data-theme="light"] .calculator-result .recommended strong {
+  color: #087443;
+}
+
+.theme-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-soft);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.theme-picker-icon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--primary-hover);
+  font-size: 1.05rem;
+}
+
+.theme-picker select {
+  max-width: 92px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.theme-picker option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.auth-site-header { position: sticky; }
+.auth-nav { min-height: 66px; }
+.auth-shell { min-height: calc(100vh - 66px); }
+
+@media (max-width: 760px) {
+  .nav { gap: 10px; }
+  .theme-picker { margin-inline-start: auto; }
+  .theme-picker select { max-width: 76px; font-size: 0.78rem; }
+}

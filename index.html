@@ -8,12 +8,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="js/theme.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#home">امیرعلی ارجمند</a>
+
+      <label class="theme-picker" title="انتخاب حالت نمایش">
+                <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                <select data-theme-control aria-label="انتخاب حالت نمایش">
+                  <option value="auto">خودکار</option>
+                  <option value="light">روشن</option>
+                  <option value="dark">تیره</option>
+                </select>
+              </label>
 
       <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false">
         <span></span>
