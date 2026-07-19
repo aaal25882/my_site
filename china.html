@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="css/china.css">
 </head>
 <body>
+<div class="hunt-promo" id="hunt-promo" role="status">
+  <div class="container hunt-promo-inner">
+    <span><b>شکار خرید:</b> کالای مخفی را در صفحه پیدا کن و داخل سبد بینداز.</span>
+    <strong>جایزه: ۵٪ تخفیف از کل کارمزد، فقط برای یک سفارش</strong>
+    <button type="button" id="hunt-guide">راهنما</button>
+  </div>
+</div>
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="china.html">خرید از چین</a>
@@ -31,6 +38,7 @@
     <nav class="nav-links" aria-label="منوی سرویس">
       <a href="#how-it-works">نحوه کار</a>
       <a href="#calculator">محاسبه سود</a>
+      <a href="#shopping-game">بازی خرید</a>
       <a href="#trust">اعتماد و امنیت</a>
       <a href="index.html">درباره سازنده</a>
       <a class="nav-login" href="auth.html">ورود / ثبت‌نام</a>
@@ -39,7 +47,7 @@
 </header>
 
 <main>
-  <section class="china-hero">
+  <section class="china-hero" data-reveal>
     <div class="container china-hero-grid">
       <div>
         <span class="service-badge">نسخه آزمایشی سامانه</span>
@@ -68,7 +76,7 @@
     </div>
   </section>
 
-  <section class="section" id="how-it-works">
+  <section class="section" id="how-it-works" data-reveal>
     <div class="container">
       <div class="section-heading">
         <div>
@@ -93,7 +101,7 @@
     </div>
   </section>
 
-  <section class="section calculator-section" id="calculator">
+  <section class="section calculator-section" id="calculator" data-reveal>
     <div class="container calculator-layout">
       <div>
         <p class="section-label">کارمزد پویا</p>
@@ -146,7 +154,25 @@
     </div>
   </section>
 
-  <section class="section" id="trust">
+  <section class="section hunt-section" id="shopping-game" data-reveal>
+    <div class="container">
+      <div class="hunt-intro-card">
+        <div>
+          <p class="section-label">مینی‌گیم سراسری خرید</p>
+          <h2 class="section-title">کالای مخفی را پیدا کن، به سبد ببر و شارژ شو</h2>
+          <p>یک کالای کوچک به‌صورت تصادفی در همین صفحه پنهان شده است. آن را پیدا کن و با کشیدن داخل سبد خرید، توکن تخفیف بگیر.</p>
+        </div>
+        <div class="hunt-rules">
+          <span>۱ کالای مخفی</span>
+          <span>۱ توکن برای هر کاربر</span>
+          <span>۵٪ تخفیف کارمزد</span>
+          <span>معتبر برای ۱ سفارش</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trust" data-reveal>
     <div class="container">
       <div class="section-heading">
         <div>
@@ -163,6 +189,31 @@
   </section>
 </main>
 
+<div class="hunt-cart" id="hunt-cart" aria-label="سبد شکار خرید" tabindex="0">
+  <span class="hunt-cart-icon" aria-hidden="true">🛒</span>
+  <span class="hunt-cart-copy"><b>سبد جایزه</b><small id="hunt-cart-status">کالای مخفی را اینجا بینداز</small></span>
+  <span class="hunt-token-count" id="hunt-token-count">۰</span>
+</div>
+
+<div class="hunt-toast" id="hunt-toast" role="status" aria-live="polite"></div>
+
+<div class="coupon-modal" id="coupon-modal" hidden>
+  <div class="coupon-backdrop" data-close-coupon></div>
+  <section class="coupon-card" role="dialog" aria-modal="true" aria-labelledby="coupon-title">
+    <button class="coupon-close" type="button" data-close-coupon aria-label="بستن">×</button>
+    <div class="coupon-celebration" aria-hidden="true">🎉</div>
+    <p class="section-label">کیف پولت شارژ شد</p>
+    <h2 id="coupon-title">توکن تخفیف ۵ درصدی</h2>
+    <p>این کد حداکثر برای <b>یک سفارش</b> و روی <b>کل کارمزد همان سفارش</b> قابل استفاده است.</p>
+    <div class="coupon-code-row">
+      <code id="coupon-code">—</code>
+      <button type="button" id="copy-coupon">کپی کد</button>
+    </div>
+    <small>در نسخه فعلی، توکن در همین مرورگر ذخیره می‌شود. اعتبارسنجی نهایی هنگام ثبت سفارش به Supabase متصل خواهد شد.</small>
+    <a class="button primary" href="auth.html?role=buyer">ثبت سفارش با تخفیف</a>
+  </section>
+</div>
+
 <footer class="site-footer">
   <div class="container footer-content">
     <p>نسخه آزمایشی سامانه خرید از چین</p>
@@ -172,5 +223,7 @@
 
 <script src="js/common.js"></script>
 <script src="js/profit-calculator.js"></script>
+<script src="js/china-interactions.js"></script>
+  <script src="js/ui-motion.js"></script>
 </body>
 </html>

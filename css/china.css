@@ -32,3 +32,110 @@
 .security-grid{grid-template-columns:repeat(3,1fr)}.security-grid b{display:block;margin-bottom:10px}
 @media(max-width:900px){.china-hero-grid,.calculator-layout{grid-template-columns:1fr}.security-grid{grid-template-columns:1fr}.china-hero{padding-top:70px}}
 @media(max-width:680px){.role-grid,.field-grid{grid-template-columns:1fr}.china-hero h1{font-size:2.45rem}.profit-calculator{padding:22px}.trust-points{display:grid}}
+
+/* Progressive interactions */
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+[data-reveal].is-visible{opacity:1;transform:none}
+.interactive-control{position:relative;overflow:hidden;isolation:isolate}
+.control-ripple{position:absolute;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.38);transform:translate(-50%,-50%) scale(0);pointer-events:none;z-index:-1;animation:ripple .62s ease-out}
+@keyframes ripple{to{transform:translate(-50%,-50%) scale(18);opacity:0}}
+.button:active,.game-option:active{transform:translateY(1px) scale(.985)}
+.button:focus-visible,.game-option:focus-visible,.role-card a:focus-visible{outline:3px solid rgba(126,232,181,.45);outline-offset:4px}
+.role-card,.security-grid article{transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.role-card:hover,.security-grid article:hover{transform:translateY(-7px);border-color:rgba(111,124,255,.38);box-shadow:0 22px 50px rgba(0,0,0,.2)}
+.route-item{transition:color .35s ease,transform .35s ease}
+.route-item.active{transform:translateX(-6px)}
+.route-item.complete b{background:rgba(66,211,146,.16);border-color:rgba(126,232,181,.4);color:#7ee8b5}
+
+/* Shopping mini-game */
+.game-section{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(111,124,255,.035),rgba(66,211,146,.025));border-block:1px solid var(--border)}
+.game-section::before{content:"";position:absolute;width:420px;height:420px;left:-180px;top:60px;border-radius:50%;background:rgba(111,124,255,.11);filter:blur(35px);pointer-events:none}
+.game-heading>p{max-width:440px;color:var(--muted)}
+.shopping-game{position:relative;border:1px solid var(--border);border-radius:32px;background:rgba(17,28,47,.82);box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(16px)}
+.game-hud{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)}
+.game-hud div{padding:18px 20px;background:var(--surface);display:grid;gap:3px}
+.game-hud span{font-size:.78rem;color:var(--muted)}
+.game-hud strong{font-size:.97rem;white-space:nowrap}
+.game-stage{padding:36px}
+.game-product{min-height:190px;padding:28px;display:flex;align-items:center;gap:28px;border:1px solid var(--border);border-radius:24px;background:linear-gradient(135deg,rgba(111,124,255,.14),rgba(255,255,255,.025));animation:gameCardIn .45s ease}
+@keyframes gameCardIn{from{opacity:0;transform:scale(.97) translateY(8px)}to{opacity:1;transform:none}}
+.game-product-emoji{flex:0 0 auto;width:112px;height:112px;display:grid;place-items:center;border-radius:30px;background:rgba(255,255,255,.075);font-size:3.8rem;box-shadow:inset 0 0 0 1px var(--border)}
+.game-kicker{color:#7ee8b5!important;font-size:.82rem;font-weight:700}.game-product h3{font-size:clamp(1.5rem,4vw,2.25rem);line-height:1.3;margin:5px 0 15px}.game-product p{color:var(--muted)}
+.game-product-meta{display:flex;flex-wrap:wrap;gap:10px 20px;color:var(--muted);font-size:.9rem}.game-product-meta b{color:var(--text)}
+.game-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.game-option{position:relative;min-height:112px;padding:16px;border:1px solid var(--border);border-radius:18px;background:var(--surface-soft);color:var(--text);font:inherit;cursor:pointer;display:grid;place-items:center;align-content:center;gap:2px;transition:transform .22s ease,border-color .22s ease,background .22s ease,opacity .22s ease}
+.game-option:hover:not(:disabled){transform:translateY(-4px);border-color:rgba(111,124,255,.5);background:rgba(111,124,255,.12)}
+.game-option span{font-size:1.45rem}.game-option b{font-size:.94rem}.game-option small{color:var(--muted)}.game-option:disabled{cursor:default;opacity:.55}.game-option.selected{opacity:1;border-color:#7ee8b5;background:rgba(66,211,146,.12);box-shadow:0 0 0 3px rgba(66,211,146,.08)}
+.game-feedback{min-height:54px;margin-top:18px;padding:13px 16px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.025);color:var(--muted)}
+.game-feedback.success{border-color:rgba(66,211,146,.35);background:rgba(66,211,146,.08);color:#a5f2ca}.game-feedback.danger{border-color:rgba(255,108,125,.35);background:rgba(255,108,125,.08);color:#ffabb5}
+.game-footer-actions{display:flex;justify-content:flex-end;margin-top:16px}.game-next,.game-restart{border:0;cursor:pointer}.game-next:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+@media(max-width:900px){.game-hud{grid-template-columns:repeat(3,1fr)}.game-hud div:nth-child(4),.game-hud div:nth-child(5){grid-column:span 1}.game-actions{grid-template-columns:1fr}.game-option{min-height:86px;grid-template-columns:auto 1fr;place-items:start;align-items:center;text-align:right;padding-inline:20px}.game-option span{grid-row:span 2}.game-option small{grid-column:2}}
+@media(max-width:680px){.game-stage{padding:18px}.game-product{align-items:flex-start;gap:18px;padding:20px;flex-direction:column}.game-product-emoji{width:80px;height:80px;border-radius:22px;font-size:2.7rem}.game-hud{grid-template-columns:repeat(2,1fr)}.game-hud div:last-child{grid-column:1/-1}.game-heading{display:block}.game-heading>p{margin-top:14px}}
+@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}.control-ripple{display:none}.game-product{animation:none}.role-card,.security-grid article,.game-option,.button,.route-item{transition:none!important}}
+
+/* Full-page hidden-product reward hunt */
+.hunt-promo{position:sticky;top:0;z-index:120;background:linear-gradient(90deg,#7659ff,#23b987);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.16)}
+.hunt-promo-inner{min-height:44px;display:flex;align-items:center;justify-content:center;gap:24px;font-size:.85rem;text-align:center}
+.hunt-promo strong{font-weight:800}.hunt-promo button{border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-weight:700}
+.site-header{top:44px}.hunt-section{padding-block:48px}.hunt-intro-card{display:grid;grid-template-columns:1.4fr .9fr;gap:32px;align-items:center;padding:32px;border:1px solid var(--border);border-radius:28px;background:linear-gradient(145deg,rgba(111,124,255,.1),rgba(66,211,146,.07));box-shadow:var(--shadow)}
+.hunt-intro-card p{color:var(--muted);line-height:2}.hunt-rules{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.hunt-rules span{padding:13px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.035);text-align:center;font-size:.87rem;font-weight:700}
+.hidden-product{position:absolute;z-index:75;width:58px;height:58px;display:grid;place-items:center;border:2px solid rgba(255,255,255,.55);border-radius:18px;background:linear-gradient(145deg,#fff,#dff9ed);box-shadow:0 14px 34px rgba(19,29,50,.36);font-size:2rem;cursor:grab;user-select:none;touch-action:none;animation:hiddenProductPulse 2.4s ease-in-out infinite;transform:translate3d(0,0,0)}
+.hidden-product::after{content:"کالای مخفی";position:absolute;bottom:-24px;white-space:nowrap;padding:2px 7px;border-radius:999px;background:rgba(10,17,30,.88);color:#fff;font-size:.62rem;font-weight:700;opacity:0;transform:translateY(-4px);transition:.2s}.hidden-product:hover::after,.hidden-product:focus-visible::after{opacity:1;transform:none}.hidden-product.is-dragging{position:fixed!important;z-index:500;cursor:grabbing;animation:none;scale:1.12;pointer-events:none}.hidden-product.is-found{animation:productFly .55s ease forwards}
+.hunt-cart{position:fixed;left:22px;bottom:22px;z-index:180;display:flex;align-items:center;gap:11px;min-width:230px;padding:12px 14px;border:1px solid var(--border);border-radius:20px;background:rgba(17,28,47,.94);color:var(--text);box-shadow:0 18px 50px rgba(0,0,0,.28);backdrop-filter:blur(18px);cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}.hunt-cart:hover{transform:translateY(-3px)}.hunt-cart.is-target{border-color:#42d392;box-shadow:0 0 0 6px rgba(66,211,146,.16),0 18px 50px rgba(0,0,0,.28);transform:scale(1.04)}.hunt-cart.has-token{border-color:rgba(66,211,146,.5)}.hunt-cart-icon{font-size:1.75rem}.hunt-cart-copy{display:grid;gap:2px;flex:1}.hunt-cart-copy b{font-size:.9rem}.hunt-cart-copy small{color:var(--muted);font-size:.68rem}.hunt-token-count{width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:#42d392;color:#07150f;font-weight:900}
+.hunt-toast{position:fixed;left:50%;bottom:105px;z-index:400;max-width:min(90vw,440px);padding:12px 18px;border-radius:14px;background:#101a2d;color:#fff;box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translate(-50%,14px);transition:.25s}.hunt-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+.coupon-modal[hidden]{display:none}.coupon-modal{position:fixed;inset:0;z-index:600;display:grid;place-items:center;padding:20px}.coupon-backdrop{position:absolute;inset:0;background:rgba(3,8,18,.75);backdrop-filter:blur(8px)}.coupon-card{position:relative;width:min(100%,520px);padding:34px;border:1px solid rgba(126,232,181,.35);border-radius:28px;background:var(--surface);box-shadow:0 30px 80px rgba(0,0,0,.45);text-align:center;animation:couponIn .35s ease}.coupon-card>p{color:var(--muted);line-height:1.9}.coupon-card>small{display:block;margin:15px 0;color:var(--muted);line-height:1.7}.coupon-card .button{justify-content:center;width:100%}.coupon-celebration{font-size:3rem}.coupon-close{position:absolute;top:14px;left:14px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.07);color:var(--text);font-size:1.4rem;cursor:pointer}.coupon-code-row{display:flex;gap:8px;margin:20px 0}.coupon-code-row code{flex:1;padding:14px;border:1px dashed #42d392;border-radius:14px;background:rgba(66,211,146,.08);font-size:1.15rem;font-weight:800;direction:ltr}.coupon-code-row button{border:0;border-radius:14px;padding:0 18px;background:#42d392;color:#07150f;font:inherit;font-weight:800;cursor:pointer}
+.discount-preview{margin-top:12px;padding:12px;border:1px solid rgba(66,211,146,.28);border-radius:12px;background:rgba(66,211,146,.07);color:#9cebc3}.discount-preview strong{display:block;margin-top:4px;color:var(--text)}
+@keyframes hiddenProductPulse{50%{transform:translateY(-6px) rotate(3deg);box-shadow:0 20px 42px rgba(66,211,146,.34)}}@keyframes productFly{to{opacity:0;transform:scale(.3) rotate(18deg)}}@keyframes couponIn{from{opacity:0;transform:translateY(18px) scale(.96)}}
+@media(max-width:800px){.hunt-promo-inner{justify-content:space-between;gap:8px;padding-block:7px}.hunt-promo-inner>span{display:none}.hunt-promo strong{font-size:.75rem}.site-header{top:43px}.hunt-intro-card{grid-template-columns:1fr}.hunt-cart{left:12px;right:12px;bottom:12px;min-width:0}.hidden-product{width:52px;height:52px}.coupon-card{padding:28px 20px}.coupon-code-row{flex-direction:column}.coupon-code-row button{padding:12px}}
+@media(prefers-reduced-motion:reduce){.hidden-product,.coupon-card{animation:none}}
+
+/* Complete light-theme treatment for China service */
+html[data-theme="light"] .china-page,
+html[data-theme="light"] .china-section { color: var(--text); }
+html[data-theme="light"] .china-hero-card,
+html[data-theme="light"] .step-card,
+html[data-theme="light"] .role-card,
+html[data-theme="light"] .profit-calculator,
+html[data-theme="light"] .calculator-result,
+html[data-theme="light"] .security-grid article,
+html[data-theme="light"] .shopping-game,
+html[data-theme="light"] .game-hud div,
+html[data-theme="light"] .game-product,
+html[data-theme="light"] .game-option,
+html[data-theme="light"] .game-feedback,
+html[data-theme="light"] .hunt-intro-card,
+html[data-theme="light"] .hunt-rules span,
+html[data-theme="light"] .coupon-card {
+  background-color: #ffffff;
+  color: #111827;
+  border-color: rgba(17,24,39,.14);
+}
+html[data-theme="light"] .china-hero-card,
+html[data-theme="light"] .game-product,
+html[data-theme="light"] .hunt-intro-card {
+  background-image: linear-gradient(145deg, rgba(63,81,215,.10), rgba(35,185,135,.05));
+}
+html[data-theme="light"] .china-page p,
+html[data-theme="light"] .china-page small,
+html[data-theme="light"] .china-page .muted,
+html[data-theme="light"] .game-product p,
+html[data-theme="light"] .game-product-meta,
+html[data-theme="light"] .game-option small,
+html[data-theme="light"] .game-feedback,
+html[data-theme="light"] .hunt-intro-card p,
+html[data-theme="light"] .coupon-card > p,
+html[data-theme="light"] .coupon-card > small { color: #4b5f78; }
+html[data-theme="light"] .game-product-emoji { background: #edf2ff; }
+html[data-theme="light"] .game-option:hover:not(:disabled) { background: #eef1ff; border-color: #6c78dd; }
+html[data-theme="light"] .game-option.selected { background: #e1f7ed; border-color: #1b9668; }
+html[data-theme="light"] .game-feedback.success { background: #e1f7ed; color: #116145; }
+html[data-theme="light"] .game-feedback.danger { background: #fee8eb; color: #9f2635; }
+html[data-theme="light"] .hunt-cart { background: rgba(255,255,255,.96); color: #111827; border-color: rgba(17,24,39,.16); }
+html[data-theme="light"] .hunt-cart-copy small { color: #53657c; }
+html[data-theme="light"] .coupon-close { background: #edf2f8; color: #111827; }
+html[data-theme="light"] .discount-preview { background: #e4f7ef; color: #116145; }
+html[data-theme="light"] .discount-preview strong { color: #111827; }
+html[data-theme="light"] .hidden-product { border-color: #ffffff; }
+html[data-theme="light"] .calculator-section,
+html[data-theme="light"] .game-section { background: linear-gradient(180deg, rgba(63,81,215,.035), rgba(35,185,135,.025)); }

@@ -24,6 +24,24 @@ function calculate(){
   document.getElementById("weight-fee").textContent=money(weightFee);
   document.getElementById("recommended-fee").textContent=money(recommended);
 
+  const rewardKey = "aaal258_hunt_reward_v1";
+  let reward = null;
+  try { reward = JSON.parse(localStorage.getItem(rewardKey) || "null"); } catch {}
+  const resultBox = document.querySelector(".calculator-result");
+  let discountPreview = document.getElementById("discount-preview");
+  if (reward?.code && reward.status === "available") {
+    if (!discountPreview) {
+      discountPreview = document.createElement("div");
+      discountPreview.id = "discount-preview";
+      discountPreview.className = "discount-preview";
+      resultBox.appendChild(discountPreview);
+    }
+    const discounted = recommended * 0.95;
+    discountPreview.innerHTML = `با توکن <b>${reward.code}</b>، کارمزد این سفارش ۵٪ کمتر می‌شود.<strong>${money(discounted)}</strong>`;
+  } else if (discountPreview) {
+    discountPreview.remove();
+  }
+
   let basis="حداقل کارمزد";
   if(recommended===weightFee) basis="سهم وزنی هزینه سفر";
   if(recommended===percentFee) basis="۴ درصد ارزش کالا";
