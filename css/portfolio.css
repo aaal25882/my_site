@@ -1,12 +1,105 @@
 /* =============================================================
-   portfolio.css — عمق، سه‌بعدی و بخش‌های تازه‌ی صفحه‌ی اصلی
-   بعد از style.css بارگذاری می‌شود و همان متغیرهای تم را
-   استفاده می‌کند، پس در حالت روشن و تیره هر دو درست است.
+   portfolio.css — فضای شناور سه‌بعدی صفحه‌ی اصلی
+
+   قاعده‌ی مرکزی این فایل: هیچ‌کس مستقیم روی transform یا opacity
+   نمی‌نویسد. هر سیستم فقط یک متغیر ست می‌کند و transform یک‌جا از
+   روی همه‌ی متغیرها ساخته می‌شود:
+
+     --sz  --srx        دوربین عمق (اسکرول)
+     --reveal-y  --rop  ظاهرشدن
+     --rx  --ry         چرخش نسبت به موس
+     --lift             بالاآمدن هنگام hover
+
+   دلیلش یک ایراد واقعی بود: قبلاً دو سیستم سر خودِ transform
+   می‌جنگیدند و آخری همه‌چیز را با «transform: none» پاک می‌کرد.
    ============================================================= */
 
 :root {
   --depth-ease: cubic-bezier(.2, .8, .2, 1);
   --tilt-speed: .38s;
+}
+
+/* =============================================================
+   هدر شناور — جزیره‌ی شیشه‌ای معلق روی صفحه
+   ============================================================= */
+html.space-enabled .site-header {
+  position: fixed;
+  inset-block-start: 14px;
+  inset-inline: 0;
+  z-index: 150;
+  background: transparent;
+  border-bottom: 0;
+  backdrop-filter: none;
+  pointer-events: none;
+}
+
+html.space-enabled .site-header .nav {
+  position: relative;
+  pointer-events: auto;
+  width: min(1120px, calc(100% - 28px));
+  margin-inline: auto;
+  min-height: 62px;
+  padding-inline: 20px;
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--surface) 74%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow:
+    0 18px 44px color-mix(in srgb, var(--text) 16%, transparent),
+    inset 0 1px 0 color-mix(in srgb, #fff 8%, transparent);
+  transition: border-color .3s ease, box-shadow .3s ease, background-color .3s ease;
+}
+
+html.space-enabled .site-header .nav:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+}
+
+html[data-theme="light"].space-enabled .site-header .nav {
+  background: rgba(255, 255, 255, .8);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, .12);
+}
+
+/* منوی کشویی موبایل به خودِ جزیره بچسبد، نه به لبه‌ی صفحه */
+@media (max-width: 680px) {
+  html.space-enabled .nav-links {
+    inset-block-start: calc(100% + 10px);
+    inset-inline: 0;
+    border-radius: 18px;
+  }
+}
+
+/* =============================================================
+   فضای یک‌تکه — مرز میان بخش‌ها برداشته می‌شود تا صفحه
+   یک فضای پیوسته به نظر برسد، نه چند جعبه‌ی جدا.
+   ============================================================= */
+html.space-enabled .portfolio-section {
+  background: transparent;
+  border-block: 0;
+}
+
+html.space-enabled body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 760px at 78% 6%,
+      color-mix(in srgb, var(--primary) 16%, transparent), transparent 62%),
+    radial-gradient(980px 640px at 10% 84%,
+      color-mix(in srgb, #22d3ee 11%, transparent), transparent 60%);
+}
+
+html[data-theme="light"].space-enabled body::after { opacity: .55; }
+
+/* =============================================================
+   لایه‌ی مادی — بوم فیزیک
+   ============================================================= */
+.space-field {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
 }
 
 /* ---------- نوار پیشرفت اسکرول ---------- */
@@ -17,7 +110,6 @@
   z-index: 200;
   height: 3px;
   pointer-events: none;
-  background: transparent;
 }
 
 .scroll-progress span {
@@ -32,44 +124,82 @@
 }
 
 /* =============================================================
-   کارت‌های سه‌بعدی — چرخش نسبت به موس
-   متغیرهای --rx / --ry / --mx / --my را js/portfolio-3d.js پر می‌کند
+   ۱. دوربین عمق — بخش‌ها در محور Z شناورند
+   ============================================================= */
+html.space-enabled main section {
+  perspective: 1300px;
+  perspective-origin: 50% 45%;
+}
+
+html.space-enabled [data-space] {
+  transform-style: preserve-3d;
+  transform:
+    translate3d(0, var(--reveal-y, 0px), var(--sz, 0px))
+    rotateX(var(--srx, 0deg));
+  opacity: calc(var(--sop, 1) * var(--rop, 1));
+  will-change: transform, opacity;
+}
+
+/* تار شدن فقط روی المان‌های کوچک — روی گرید بلند پروژه‌ها
+   filter پرهزینه است و کارت‌ها را کند می‌کند. */
+html.space-enabled .section-heading[data-space],
+html.space-enabled .hero-content[data-space] {
+  filter: blur(var(--sblur, 0px));
+}
+
+/* =============================================================
+   ۲. ظاهرشدن — فقط متغیر ست می‌کند، نه transform
+   ============================================================= */
+[data-reveal] {
+  --reveal-y: 24px;
+  --rop: 0;
+  transition:
+    transform .68s var(--depth-ease) var(--reveal-delay, 0ms),
+    opacity .68s ease var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-in {
+  --reveal-y: 0px;
+  --rop: 1;
+}
+
+/* المانی که فقط ظاهر می‌شود و در عمق حرکت نمی‌کند */
+html.space-enabled [data-reveal]:not([data-space]):not([data-tilt]) {
+  transform: translate3d(0, var(--reveal-y), 0);
+  opacity: var(--rop);
+}
+
+/* اگر جاوااسکریپت بالا نیامد، همه‌چیز دیده شود */
+html:not(.space-enabled) [data-reveal] {
+  --reveal-y: 0px;
+  --rop: 1;
+  transform: none;
+  opacity: 1;
+}
+
+/* =============================================================
+   ۳. چرخش کارت‌ها نسبت به موس
    ============================================================= */
 [data-tilt] {
   --rx: 0deg;
   --ry: 0deg;
   --mx: 50%;
   --my: 50%;
-  --reveal-y: 0px;
   --lift: 0px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform var(--tilt-speed) var(--depth-ease),
-              box-shadow var(--tilt-speed) var(--depth-ease),
-              border-color .25s ease;
-  will-change: transform;
-}
-
-/* یک اعلان transform برای همه‌ی حالت‌ها.
-   style.css قاعده‌ی «html.motion-enabled .ui-reveal.is-visible { transform: none }»
-   را دارد که ویژگی‌اش از [data-tilt] بیشتر است و چرخش سه‌بعدی را خنثی می‌کرد.
-   به‌جای جنگ بر سر خودِ transform، هر سه حالت (ظاهرشدن، بالاآمدن، چرخش)
-   فقط متغیر ست می‌کنند و transform یک‌جا از روی متغیرها ساخته می‌شود. */
-[data-tilt],
-html.motion-enabled [data-tilt].ui-reveal,
-html.motion-enabled [data-tilt].ui-reveal.is-visible {
   transform:
     perspective(1100px)
-    translate3d(0, calc(var(--reveal-y) + var(--lift)), 0)
+    translate3d(0, calc(var(--reveal-y, 0px) + var(--lift)), 0)
     rotateX(var(--rx))
     rotateY(var(--ry));
-}
-
-html.motion-enabled [data-tilt].ui-reveal { --reveal-y: 22px; }
-html.motion-enabled [data-tilt].ui-reveal.is-visible { --reveal-y: 0px; }
-
-[data-tilt].is-tilting {
-  transition: transform .06s linear, box-shadow .2s ease;
+  opacity: var(--rop, 1);
+  transition:
+    transform var(--tilt-speed) var(--depth-ease),
+    opacity .68s ease var(--reveal-delay, 0ms),
+    box-shadow var(--tilt-speed) var(--depth-ease),
+    border-color .25s ease;
+  will-change: transform;
 }
 
 [data-tilt] [data-layer] {
@@ -151,7 +281,6 @@ html[data-theme="light"] .hero-aura .orb { opacity: .3; filter: blur(80px); }
 html[data-theme="light"] .orb-2,
 html[data-theme="light"] .orb-3 { opacity: .18; }
 
-/* صفحه‌ی شبکه‌ای که در عمق خوابیده */
 .hero-grid-plane {
   position: absolute;
   inset-block-end: -30%;
@@ -173,7 +302,6 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
 
 .hero .eyebrow { letter-spacing: 0; }
 
-/* کارت معرفی */
 .hero-card {
   overflow: visible;
   z-index: 2;
@@ -186,7 +314,6 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
 }
 
 .hero-card::before { z-index: 0; }
-
 .hero-card > * { position: relative; z-index: 2; }
 
 .hero-card:hover {
@@ -194,6 +321,62 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
     0 34px 80px color-mix(in srgb, var(--primary) 26%, transparent),
     var(--shadow);
   border-color: color-mix(in srgb, var(--primary) 42%, var(--border));
+}
+
+/* ---------- خط ماشین‌تحریر ---------- */
+.type-line {
+  direction: ltr;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 22px;
+  padding: 11px 16px;
+  border: 1px solid color-mix(in srgb, var(--primary) 26%, var(--border));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 62%, transparent);
+  backdrop-filter: blur(8px);
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: .86rem;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.type-prompt {
+  flex-shrink: 0;
+  color: var(--primary-hover);
+  font-weight: 700;
+  opacity: .85;
+}
+
+.type-out {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.type-caret {
+  flex-shrink: 0;
+  width: 2px;
+  height: 1.05em;
+  margin-inline-start: -6px;
+  background: var(--primary-hover);
+  animation: type-blink 1.05s steps(1) infinite;
+}
+
+@keyframes type-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+@media (max-width: 680px) {
+  .type-line { font-size: .74rem; padding: 9px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .type-caret { animation: none; }
 }
 
 .hero-card-meta {
@@ -206,7 +389,6 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
   font-size: .86rem;
 }
 
-/* آواتار — عکس با جایگزین حروف اول */
 .avatar {
   position: relative;
   overflow: hidden;
@@ -227,6 +409,142 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
   z-index: 1;
   font-size: 2rem;
   font-weight: 800;
+}
+
+/* =============================================================
+   هزارتوی پروژه‌ها — صحنه‌ی WebGL
+   ============================================================= */
+.labyrinth {
+  position: relative;
+  margin-bottom: 30px;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% 8%,
+      color-mix(in srgb, var(--primary) 16%, transparent), transparent 60%),
+    #080d1a;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+
+.labyrinth.is-ready { opacity: 1; }
+.labyrinth[hidden] { display: none; }
+
+.lab-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 62vh, 620px);
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.lab-stage.is-dragging { cursor: grabbing; }
+.lab-stage.is-hot { cursor: pointer; }
+.lab-stage canvas { display: block; }
+
+/* راهنمای گوشه */
+.lab-hint {
+  position: absolute;
+  inset-block-end: 18px;
+  inset-inline-start: 20px;
+  z-index: 3;
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  color: rgba(214, 224, 255, .58);
+  font-size: .78rem;
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+
+.lab-hint.is-faded { opacity: 0; }
+
+/* پنل اطلاعات پروژه */
+.lab-panel {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 4;
+  width: min(300px, 74%);
+  margin: 16px 0 0 16px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--accent, #7c3aed) 42%, rgba(255,255,255,.12));
+  border-radius: 16px;
+  background: rgba(9, 14, 28, .82);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+  color: #eef1ff;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .22s ease, transform .22s var(--depth-ease);
+  will-change: transform;
+}
+
+.lab-panel.is-on { opacity: 1; }
+.lab-panel.flip-x { margin-inline-start: 0; translate: -100% 0; }
+.lab-panel.flip-y { translate: 0 -100%; }
+.lab-panel.flip-x.flip-y { translate: -100% -100%; }
+
+.lab-panel-cat {
+  display: block;
+  margin-bottom: 5px;
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+.lab-panel h3 {
+  margin: 0 0 7px;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.lab-panel p {
+  margin: 0;
+  color: rgba(226, 232, 255, .76);
+  font-size: .84rem;
+  line-height: 1.75;
+}
+
+.lab-panel-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lab-panel-stack li {
+  padding: 3px 8px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 7px;
+  color: rgba(214, 224, 255, .8);
+  font-size: .7rem;
+  font-weight: 600;
+}
+
+.lab-panel-link {
+  display: block;
+  margin-top: 12px;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.lab-caption {
+  margin: 0 0 34px;
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+/* صحنه همیشه تیره است، پس در تم روشن هم قاب باید تیره بماند */
+html[data-theme="light"] .labyrinth {
+  border-color: rgba(17, 24, 39, .18);
+}
+
+@media (max-width: 760px) {
+  .labyrinth { display: none; }
+  .lab-caption { display: none; }
 }
 
 /* =============================================================
@@ -293,7 +611,6 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
   font-weight: 700;
 }
 
-/* رنگ اختصاصی هر پروژه */
 .project-image[data-scheme="aora"]      { background: linear-gradient(135deg,#4338ca,#7c3aed); }
 .project-image[data-scheme="charity"]   { background: linear-gradient(135deg,#0f766e,#14b8a6); }
 .project-image[data-scheme="domestika"] { background: linear-gradient(135deg,#b91c1c,#f97316); }
@@ -376,7 +693,6 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
   font-size: 1.15rem;
 }
 
-/* خط زمانی */
 .timeline {
   display: grid;
   gap: 26px;
@@ -417,7 +733,6 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
 
 .timeline-item li { margin-bottom: 5px; }
 
-/* مهارت‌ها */
 .skill-groups {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -448,7 +763,6 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
   color: var(--text);
 }
 
-/* افتخارات */
 .honors {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -507,7 +821,7 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
 
 .contact-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 14px;
   margin-top: 30px;
 }
@@ -551,6 +865,15 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
   align-content: center;
 }
 
+/* ---------- بازخورد دکمه‌ها (جایگزین ui-motion.js) ---------- */
+.ui-control {
+  position: relative;
+  transition: transform .18s ease, box-shadow .18s ease,
+              background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.ui-control:hover:not(:disabled) { transform: translateY(-2px); }
+.ui-control:active:not(:disabled) { transform: translateY(0) scale(.98); }
+
 /* =============================================================
    واکنش‌گرایی
    ============================================================= */
@@ -573,21 +896,26 @@ html[data-theme="light"] .orb-3 { opacity: .18; }
   .contact-list { grid-template-columns: 1fr; }
 }
 
-/* روی دستگاه لمسی چرخش سه‌بعدی معنا ندارد */
+/* روی دستگاه لمسی چرخش نسبت به موس معنا ندارد،
+   ولی دوربین عمق و فیزیک سر جایشان می‌مانند. */
 @media (hover: none) {
-  [data-tilt] { transform: none !important; }
-  [data-tilt] [data-layer] { transform: none !important; }
+  [data-tilt] { --rx: 0deg; --ry: 0deg; }
   .card-shine { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html.space-enabled [data-space],
   [data-tilt],
   [data-tilt] [data-layer],
+  [data-reveal],
   .hero-aura .orb,
   .hero-grid-plane,
   .project-mark {
     transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
     transition: none !important;
   }
-  .scroll-progress { display: none; }
+  .scroll-progress,
+  .space-field { display: none; }
 }

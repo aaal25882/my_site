@@ -63,7 +63,7 @@
       </div>
 
       <div class="container hero-grid">
-        <div class="hero-content">
+        <div class="hero-content" data-space="0.5">
           <p class="eyebrow">توسعه‌دهنده وب · طراح گرافیک · مدیر رسانه</p>
           <h1>سلام، من <span>امیرعلی ارجمند</span> هستم.</h1>
           <p class="hero-text">
@@ -71,6 +71,12 @@
             از ۹ سالگی با کامپیوتر کار می‌کنم و از ۱۲ سالگی برنامه‌نویسی و انیمیشن‌سازی را
             شروع کرده‌ام.
           </p>
+
+          <div class="type-line" aria-hidden="true">
+            <span class="type-prompt">&gt;_</span>
+            <span class="type-out" data-typewriter='["const idea = design(problem);","await build({ web, motion, graphics });","render(experience).then(ship);","while (curious) { keepLearning(); }"]'></span>
+            <span class="type-caret"></span>
+          </div>
 
           <div class="hero-actions">
             <a class="button primary" href="#portfolio">مشاهده نمونه‌کارها</a>
@@ -94,7 +100,7 @@
           </div>
         </div>
 
-        <div class="hero-card" data-tilt data-tilt-max="9">
+        <div class="hero-card" data-tilt data-tilt-max="9" data-reveal>
           <span class="card-shine" aria-hidden="true"></span>
 
           <div class="avatar" data-layer="60">
@@ -121,13 +127,13 @@
 
     <!-- ==================== ABOUT ==================== -->
     <section class="section" id="about">
-      <div class="container section-grid">
+      <div class="container section-grid" data-space="0.8">
         <div>
           <p class="section-label">درباره من</p>
           <h2 class="section-title">معرفی کوتاه</h2>
         </div>
 
-        <div class="about-card" data-tilt data-tilt-max="4">
+        <div class="about-card" data-tilt data-tilt-max="4" data-reveal>
           <p>
             فعال در حوزه‌ی فناوری و تولید محتوای دیجیتال. کارم را از ۹ سالگی با کامپیوتر
             شروع کردم و از ۱۲ سالگی به برنامه‌نویسی و انیمیشن‌سازی رسیدم. امروز میان سه
@@ -154,7 +160,7 @@
     <!-- ==================== PORTFOLIO ==================== -->
     <section class="section portfolio-section" id="portfolio">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-space="1.1" data-reveal>
           <div>
             <p class="section-label">نمونه‌کارها</p>
             <h2 class="section-title">پروژه‌های من</h2>
@@ -165,9 +171,23 @@
           </p>
         </div>
 
-        <div class="portfolio-grid">
+        <div class="labyrinth" data-labyrinth>
+          <div class="lab-stage">
+            <p class="lab-hint">
+              <span>برای چرخاندن هزارتو بکشید</span>
+              <span>موس را روی هر نشانگر ببرید</span>
+            </p>
+            <div class="lab-panel" role="status" aria-live="polite"></div>
+          </div>
+        </div>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+        <p class="lab-caption">
+          هشت پروژه، هرکدام یک نشانگر رنگی در هزارتو. جزئیات کامل هر پروژه در فهرست زیر هم آمده است.
+        </p>
+
+        <div class="portfolio-grid" data-space="0.7">
+
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="aora">
               <span class="project-mark" data-layer="40">آ</span>
@@ -189,7 +209,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="charity">
               <span class="project-mark" data-layer="40">خ</span>
@@ -211,7 +231,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="domestika">
               <span class="project-mark" data-layer="40">د</span>
@@ -230,7 +250,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="resume">
               <span class="project-mark" data-layer="40">ر</span>
@@ -252,7 +272,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="china">
               <span class="project-mark" data-layer="40">چ</span>
@@ -274,7 +294,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="tooper">
               <span class="project-mark" data-layer="40">ت</span>
@@ -296,7 +316,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="excel">
               <span class="project-mark" data-layer="40">ا</span>
@@ -315,7 +335,7 @@
             </div>
           </article>
 
-          <article class="project-card" data-tilt data-tilt-max="7">
+          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
             <span class="card-shine" aria-hidden="true"></span>
             <div class="project-image" data-scheme="motion">
               <span class="project-mark" data-layer="40">۳D</span>
@@ -341,7 +361,7 @@
     <!-- ==================== RESUME ==================== -->
     <section class="section" id="resume">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading" data-space="1.1" data-reveal>
           <div>
             <p class="section-label">رزومه</p>
             <h2 class="section-title">تجربه، مهارت و تحصیلات</h2>
@@ -351,10 +371,10 @@
           </a>
         </div>
 
-        <div class="resume-grid">
+        <div class="resume-grid" data-space="0.7">
 
           <!-- experience -->
-          <div class="resume-block" data-tilt data-tilt-max="3">
+          <div class="resume-block" data-tilt data-tilt-max="3" data-reveal>
             <h3 class="resume-block-title">تجربه‌ی حرفه‌ای</h3>
             <div class="timeline">
               <article class="timeline-item">
@@ -373,7 +393,7 @@
           </div>
 
           <!-- education -->
-          <div class="resume-block" data-tilt data-tilt-max="3">
+          <div class="resume-block" data-tilt data-tilt-max="3" data-reveal>
             <h3 class="resume-block-title">تحصیلات و دوره‌ها</h3>
             <div class="timeline">
               <article class="timeline-item">
@@ -407,7 +427,7 @@
           </div>
 
           <!-- skills -->
-          <div class="resume-block resume-block-wide" data-tilt data-tilt-max="3">
+          <div class="resume-block resume-block-wide" data-tilt data-tilt-max="3" data-reveal>
             <h3 class="resume-block-title">مهارت‌ها</h3>
             <div class="skill-groups">
               <div class="skill-group">
@@ -434,7 +454,7 @@
           </div>
 
           <!-- honors -->
-          <div class="resume-block resume-block-wide" data-tilt data-tilt-max="3">
+          <div class="resume-block resume-block-wide" data-tilt data-tilt-max="3" data-reveal>
             <h3 class="resume-block-title">افتخارات</h3>
             <div class="honors">
               <article class="honor-card">
@@ -460,8 +480,8 @@
 
     <!-- ==================== CONTACT ==================== -->
     <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-card" data-tilt data-tilt-max="4">
+      <div class="container" data-space="0.9">
+        <div class="contact-card" data-tilt data-tilt-max="4" data-reveal>
           <span class="card-shine" aria-hidden="true"></span>
           <div>
             <p class="section-label">ارتباط با من</p>
@@ -524,7 +544,7 @@
     });
     document.getElementById('year').textContent = new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
   </script>
-  <script src="js/ui-motion.js"></script>
-  <script src="js/portfolio-3d.js"></script>
+  <script src="js/space-3d.js"></script>
+  <script src="js/labyrinth.js"></script>
 </body>
 </html>
