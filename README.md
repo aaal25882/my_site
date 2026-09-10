@@ -1,12 +1,29 @@
-# سامانه خرید از چین
+# aaal258.ir
 
-این مخزن شامل سایت شخصی امیرعلی ارجمند و نسخه اولیه سامانه واسطه خرید از چین است.
+سایت شخصی امیرعلی ارجمند لاری، به‌همراه سامانه‌ی واسطه‌ی خرید از چین. روی GitHub Pages منتشر می‌شود.
 
 ## صفحات
 - `index.html`: سایت شخصی فعلی و لینک ورود به سامانه
-- `china.html`: معرفی سرویس و محاسبه‌گر کارمزد
+- `china.html`: معرفی سرویس و ثبت سفارش
 - `auth.html`: ورود و ثبت‌نام ایمیلی و Google
 - `dashboard.html`: بررسی Session، نمایش نقش و وضعیت تأیید کاربر
+
+## ساختار پوشه‌ها
+```
+index.html            صفحه‌ی اصلی
+china.html · auth.html · dashboard.html
+css/
+  site.css            استایل صفحه‌ی اصلی
+  style.css           استایل مشترک صفحه‌های سامانه
+  china.css · auth.css · dashboard.css
+js/
+  site.js             رفتار صفحه‌ی اصلی (شمارنده‌ها، منو، نمایش تدریجی)
+  theme.js · common.js · ui-motion.js     مشترک
+  supabase-config.js  تنظیمات عمومی Supabase
+  china-interactions.js · auth.js · dashboard.js · order-pricing.js
+assets/               لوگو و رزومه
+supabase/             اسکیما، مهاجرت و Edge Function
+```
 
 ## اتصال Supabase
 تنظیمات عمومی فرانت‌اند در `js/supabase-config.js` قرار دارند.
