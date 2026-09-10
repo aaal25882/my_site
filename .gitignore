@@ -4,3 +4,9 @@
 # فایل‌های سیستمی
 .DS_Store
 Thumbs.db
+
+# خروجی رندر Blender — از روی blender/valley.py دوباره ساخته می‌شود
+blender/render/
+blender/__pycache__/
+# تصویر خام لوگو؛ نسخه‌ی مورد استفاده در blender/logo_mask.png است
+blender/Codex Image*

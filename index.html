@@ -3,548 +3,336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="امیرعلی ارجمند لاری — توسعه‌دهنده وب، طراح گرافیک و مدیر رسانه. نمونه‌کارها، مهارت‌ها و رزومه." />
+  <meta name="description" content="امیرعلی ارجمند لاری — توسعه‌دهنده وب، طراح گرافیک و مدیر رسانه. هشت پروژه‌ی اجراشده، از سامانه‌های وب تا بازی و انیمیشن." />
   <meta name="author" content="امیرعلی ارجمند لاری" />
-  <meta property="og:title" content="امیرعلی ارجمند لاری | توسعه‌دهنده وب و طراح گرافیک" />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="امیرعلی ارجمند لاری" />
   <meta property="og:description" content="خلاق در مرز میان فناوری و رسانه؛ از ایده و طراحی تا پیاده‌سازی تجربه‌های دیجیتال." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://aaal258.ir" />
+  <meta property="og:image" content="assets/valley-1280.jpg" />
   <meta property="og:locale" content="fa_IR" />
-  <link rel="canonical" href="https://aaal258.ir" />
-  <title>امیرعلی ارجمند لاری | توسعه‌دهنده وب و طراح گرافیک</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="js/theme.js"></script>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="css/portfolio.css" />
+  <title>امیرعلی ارجمند لاری</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- فونت پیکسلی — فقط لاتین و اعداد را می‌کِشد، برای فارسی به‌کار نمی‌رود -->
+  <link href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#home">امیرعلی ارجمند</a>
+  <!-- ============ ویدیوی پس‌زمینه ============ -->
+  <div class="bg" aria-hidden="true">
+    <video class="bg-video" autoplay muted loop playsinline poster="assets/valley-1280.jpg">
+      <source
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4"
+        type="video/mp4" />
+    </video>
+    <div class="bg-scrim"></div>
+  </div>
 
-      <label class="theme-picker" title="انتخاب حالت نمایش">
-        <span class="theme-picker-icon" aria-hidden="true">◐</span>
-        <select data-theme-control aria-label="انتخاب حالت نمایش">
-          <option value="auto">خودکار</option>
-          <option value="light">روشن</option>
-          <option value="dark">تیره</option>
-        </select>
-      </label>
+  <!-- ============ هدر ============ -->
+  <header class="header">
+    <a class="logo" href="#top" aria-label="خانه">
+      <img src="assets/logo-mask.png" alt="" width="52" height="52" />
+    </a>
 
-      <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    <nav class="nav" aria-label="منوی اصلی">
+      <a class="nav-link is-active" href="#top" aria-current="page">خانه</a>
+      <a class="nav-link" href="#work">پروژه‌ها</a>
+      <a class="nav-link" href="#resume">رزومه</a>
+      <a class="nav-link" href="#contact">تماس</a>
+    </nav>
 
-      <nav class="nav-links" aria-label="منوی اصلی">
-        <a href="#home">خانه</a>
-        <a href="#about">درباره من</a>
-        <a href="#portfolio">نمونه‌کارها</a>
-        <a href="#resume">رزومه</a>
-        <a href="#contact">ارتباط با من</a>
-        <a href="china.html">خرید از چین</a>
-      </nav>
-    </div>
+    <a class="sign-in" href="assets/resume-amirali-arjmand-lari.pdf" download>دانلود رزومه</a>
+
+    <button class="burger" id="burger" type="button"
+            aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <main>
-    <!-- ==================== HERO ==================== -->
-    <section class="hero" id="home" data-parallax-scene>
-      <div class="hero-aura" aria-hidden="true">
-        <span class="orb orb-1" data-depth="0.06"></span>
-        <span class="orb orb-2" data-depth="0.11"></span>
-        <span class="orb orb-3" data-depth="0.04"></span>
-        <span class="hero-grid-plane"></span>
+  <div class="page" id="top">
+
+    <!-- ============ هیرو ============ -->
+    <main class="hero">
+
+      <div class="trust anim" style="--d:.05s">
+        <span class="avatar a1" title="توسعه‌ی وب">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6 3 12l5 6M16 6l5 6-5 6M13.5 4l-3 16"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="avatar a2" title="طراحی گرافیک">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1-.3-.3-.4-.6-.4-1 0-.9.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8Z"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="7.5" cy="12" r="1.3" fill="currentColor"/><circle cx="10" cy="8" r="1.3" fill="currentColor"/><circle cx="14.5" cy="8" r="1.3" fill="currentColor"/></svg>
+        </span>
+        <span class="avatar a3" title="تدوین و انیمیشن">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"
+            fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>
+        </span>
+        <span class="trust-pill">توسعه‌دهنده وب · طراح گرافیک · مدیر رسانه</span>
       </div>
 
-      <div class="container hero-grid">
-        <div class="hero-content" data-space="0.5">
-          <p class="eyebrow">توسعه‌دهنده وب · طراح گرافیک · مدیر رسانه</p>
-          <h1>سلام، من <span>امیرعلی ارجمند</span> هستم.</h1>
-          <p class="hero-text">
-            خلاق در مرز میان فناوری و رسانه؛ از ایده و طراحی تا پیاده‌سازی تجربه‌های دیجیتال.
-            از ۹ سالگی با کامپیوتر کار می‌کنم و از ۱۲ سالگی برنامه‌نویسی و انیمیشن‌سازی را
-            شروع کرده‌ام.
-          </p>
+      <p class="eyebrow anim" style="--d:.14s">AMIRALI ARJMAND LARI</p>
 
-          <div class="type-line" aria-hidden="true">
-            <span class="type-prompt">&gt;_</span>
-            <span class="type-out" data-typewriter='["const idea = design(problem);","await build({ web, motion, graphics });","render(experience).then(ship);","while (curious) { keepLearning(); }"]'></span>
-            <span class="type-caret"></span>
-          </div>
+      <h1 class="headline">
+        <span class="line l1">ساختن تجربه‌های</span>
+        <span class="line l2">دیجیتالِ ماندگار</span>
+      </h1>
 
-          <div class="hero-actions">
-            <a class="button primary" href="#portfolio">مشاهده نمونه‌کارها</a>
-            <a class="button secondary" href="assets/resume-amirali-arjmand-lari.pdf" download>دانلود رزومه (PDF)</a>
-            <a class="button secondary" href="#contact">ارتباط با من</a>
-          </div>
+      <p class="subhead anim" style="--d:.28s">
+        خلاق در مرز میان فناوری و رسانه. از ۹ سالگی با کامپیوتر کار می‌کنم و از
+        ۱۲ سالگی برنامه‌نویسی و انیمیشن‌سازی را شروع کرده‌ام.
+      </p>
 
-          <div class="hero-stats">
-            <div>
-              <strong data-count-to="8">۸</strong>
-              <span>پروژه‌ی اجراشده</span>
-            </div>
-            <div>
-              <strong>از ۱۲ سالگی</strong>
-              <span>برنامه‌نویسی و انیمیشن</span>
-            </div>
-            <div>
-              <strong>رتبه ۱ کشوری</strong>
-              <span>مسابقات رباتیک</span>
-            </div>
-          </div>
-        </div>
+      <div class="cta-row">
+        <a class="cta" href="#work" style="--d:.4s">دیدن پروژه‌ها</a>
+        <a class="cta cta-ghost" href="#contact" style="--d:.46s">ارتباط با من</a>
+      </div>
 
-        <div class="hero-card" data-tilt data-tilt-max="9" data-reveal>
-          <span class="card-shine" aria-hidden="true"></span>
+    </main>
 
-          <div class="avatar" data-layer="60">
-            <img src="assets/profile.jpg" alt="امیرعلی ارجمند لاری" loading="lazy"
-                 onerror="this.remove()" />
-            <span class="avatar-initials" aria-hidden="true">ا.ا</span>
-          </div>
+    <!-- ============ آمار ============ -->
+    <section class="stats" id="stats" aria-label="آمار">
+      <div class="stat anim" style="--d:.5s">
+        <span class="stat-icon">#</span>
+        <span class="stat-value" data-target="8" data-decimals="0">0</span>
+        <span class="stat-label">پروژه‌ی اجراشده</span>
+      </div>
+      <div class="stat anim" style="--d:.58s">
+        <span class="stat-icon">*</span>
+        <span class="stat-value" data-target="12" data-decimals="0">0</span>
+        <span class="stat-label">مهارت تخصصی</span>
+      </div>
+      <div class="stat anim" style="--d:.66s">
+        <span class="stat-icon">&lt;</span>
+        <span class="stat-value" data-target="3" data-decimals="0">0</span>
+        <span class="stat-label">دوره‌ی تخصصی</span>
+      </div>
+      <div class="stat anim" style="--d:.74s">
+        <span class="stat-icon">%</span>
+        <span class="stat-value" data-target="2" data-decimals="0">0</span>
+        <span class="stat-label">افتخار کشوری و استانی</span>
+      </div>
+    </section>
 
-          <div data-layer="34">
-            <h2>امیرعلی ارجمند لاری</h2>
-            <p>توسعه‌دهنده وب، طراح گرافیک و مدیر رسانه</p>
-          </div>
+    <a class="scroll-cue" href="#work" aria-label="رفتن به پروژه‌ها"><span></span></a>
+  </div>
 
-          <div class="hero-card-meta" data-layer="20">
-            <span>سیرجان، ایران</span>
-            <span aria-hidden="true">·</span>
-            <span>مدیر رسانه در شرکت کسا</span>
-          </div>
+  <!-- ============ محتوا ============ -->
+  <div class="content">
 
-          <span class="status" data-layer="46">آماده همکاری</span>
+    <!-- پروژه‌ها -->
+    <section class="sec" id="work">
+      <div class="wrap">
+        <p class="sec-k rv">نمونه‌کارها</p>
+        <h2 class="sec-t rv">هشت پروژه‌ای که ساخته‌ام</h2>
+        <p class="sec-p rv">از سامانه‌های وب با پایگاه داده تا بازی و انیمیشن.</p>
+
+        <div class="works">
+          <article class="work rv" style="--c:#abc2ff">
+            <span class="work-n">۰۱</span>
+            <p class="work-k">سامانه‌ی وب · Next.js</p>
+            <h3>آئورا</h3>
+            <p>سامانه‌ی مرجعیت‌سازی و هماهنگی فعالیت‌های علوم پایه؛ پلتفرمی سه‌وجهی با نظام مسائل اساسی، شبکه‌ی متخصصان، گزارش‌دهی ماهانه و داشبورد تحلیلی.</p>
+            <ul class="chips"><li>Next.js 14</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li></ul>
+            <a class="work-link" href="https://aora.ir" target="_blank" rel="noopener">aora.ir ↗</a>
+          </article>
+
+          <article class="work rv" style="--c:#7aeccd">
+            <span class="work-n">۰۲</span>
+            <p class="work-k">سایت سازمانی · Vue 3</p>
+            <h3>خیریه ابوالفضل‌العباس (ع)</h3>
+            <p>طراحی و راه‌اندازی سایت برای معرفی خیریه و سامان‌دهی فعالیت‌ها، مددجویان و کمک‌های مردمی.</p>
+            <ul class="chips"><li>Vue 3</li><li>PHP</li><li>MySQL</li></ul>
+            <a class="work-link" href="https://aasscharity.ir" target="_blank" rel="noopener">aasscharity.ir ↗</a>
+          </article>
+
+          <article class="work rv" style="--c:#ffb193">
+            <span class="work-n">۰۳</span>
+            <p class="work-k">پلتفرم آموزشی</p>
+            <h3>دامستیکا</h3>
+            <p>پلتفرم آموزش خلاق فارسی با ۲۰ صفحه‌ی راست‌به‌چپ: فهرست و جزئیات دوره، پخش درس، سبد خرید، پنل کاربری و پنل مدیریت با کنترل نقش.</p>
+            <ul class="chips"><li>Supabase</li><li>RLS</li><li>Edge Functions</li><li>GitHub Actions</li></ul>
+          </article>
+
+          <article class="work rv" style="--c:#fce387">
+            <span class="work-n">۰۴</span>
+            <p class="work-k">ابزار وب</p>
+            <h3>رزومه‌استودیو</h3>
+            <p>رزومه‌ساز فارسی تک‌صفحه‌ای با راهنمای مرحله‌ای، قالب‌های قابل ویرایش، برش تصویر، خروجی PDF و ذخیره‌سازی ابری.</p>
+            <ul class="chips"><li>Supabase</li><li>PDF Export</li><li>GitHub Pages</li></ul>
+            <a class="work-link" href="https://aaal25882.github.io/resume-studio-fa/" target="_blank" rel="noopener">مشاهده‌ی سایت ↗</a>
+          </article>
+
+          <article class="work rv" style="--c:#9ee6ff">
+            <span class="work-n">۰۵</span>
+            <p class="work-k">سامانه‌ی نقش‌محور</p>
+            <h3>سامانه‌ی خرید از چین</h3>
+            <p>واسطه‌ی میان خریدار و مسافر: ثبت سفارش، تطبیق با پرواز، تأیید مدارک حمل‌کننده و قیمت‌گذاری خودکار — با دسترسی تفکیک‌شده‌ی خریدار، مسافر و مدیر.</p>
+            <ul class="chips"><li>Supabase</li><li>RLS</li><li>Storage خصوصی</li></ul>
+            <a class="work-link" href="china.html">مشاهده‌ی سامانه ↗</a>
+          </article>
+
+          <article class="work rv" style="--c:#eca8f9">
+            <span class="work-n">۰۶</span>
+            <p class="work-k">بازی · متن‌باز</p>
+            <h3>بازی توپر</h3>
+            <p>یک بازی رایگان و متن‌باز که برای سرگرمی ساخته شده و کد کاملش در دسترس عموم است.</p>
+            <ul class="chips"><li>Game Dev</li><li>Open Source</li></ul>
+            <a class="work-link" href="https://github.com/aaal25882/tooper_game" target="_blank" rel="noopener">مخزن گیت‌هاب ↗</a>
+          </article>
+
+          <article class="work rv" style="--c:#b1f9b1">
+            <span class="work-n">۰۷</span>
+            <p class="work-k">ابزار داده · آفلاین</p>
+            <h3>داشبورد اکسل</h3>
+            <p>ابزاری کاملاً آفلاین برای بازچینش و پاک‌سازی فایل‌های اکسل؛ داده‌ی خام را می‌گیرد و ساختار قابل تحلیل تحویل می‌دهد، بدون اینکه فایل جایی آپلود شود.</p>
+            <ul class="chips"><li>JavaScript</li><li>XLSX</li><li>بدون سرور</li></ul>
+          </article>
+
+          <article class="work rv" style="--c:#ff9ec2">
+            <span class="work-n">۰۸</span>
+            <p class="work-k">بازی و انیمیشن</p>
+            <h3>بازی‌سازی و انیمیشن</h3>
+            <p>ساخت دو بازی دوبعدی در Unity، انیمیشن دوبعدی با Moho، و تجربه‌ی مدل‌سازی و انیمیشن سه‌بعدی با Maya.</p>
+            <ul class="chips"><li>Unity</li><li>Moho</li><li>Maya</li></ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ==================== ABOUT ==================== -->
-    <section class="section" id="about">
-      <div class="container section-grid" data-space="0.8">
+    <!-- درباره -->
+    <section class="sec" id="about">
+      <div class="wrap wrap-2">
         <div>
-          <p class="section-label">درباره من</p>
-          <h2 class="section-title">معرفی کوتاه</h2>
+          <p class="sec-k rv">درباره من</p>
+          <h2 class="sec-t rv">میان فناوری و رسانه</h2>
         </div>
-
-        <div class="about-card" data-tilt data-tilt-max="4" data-reveal>
-          <p>
+        <div class="rv">
+          <p class="body-p">
             فعال در حوزه‌ی فناوری و تولید محتوای دیجیتال. کارم را از ۹ سالگی با کامپیوتر
             شروع کردم و از ۱۲ سالگی به برنامه‌نویسی و انیمیشن‌سازی رسیدم. امروز میان سه
             حوزه کار می‌کنم که به هم وصل‌اند: توسعه‌ی وب، طراحی گرافیک، و تدوین و انیمیشن.
           </p>
-          <p>
+          <p class="body-p">
             همین ترکیب باعث می‌شود یک پروژه را از ابتدا تا انتها ببرم — از ساختار داده و
             بک‌اند تا رابط کاربری، هویت بصری و ویدیوی معرفی. دانشجوی فیزیک دانشگاه علم و
             صنعت ایران هستم و در کنارش پروژه‌های واقعی می‌سازم.
           </p>
-
-          <div class="skills">
-            <span>توسعه‌ی وب</span>
-            <span>طراحی رابط کاربری</span>
-            <span>گرافیک و هویت بصری</span>
-            <span>تدوین و انیمیشن</span>
-            <span>بازی‌سازی دوبعدی</span>
-            <span>مدیریت رسانه</span>
-          </div>
+          <ul class="chips chips-lg">
+            <li>توسعه‌ی وب</li><li>طراحی رابط کاربری</li><li>گرافیک و هویت بصری</li>
+            <li>تدوین و انیمیشن</li><li>بازی‌سازی دوبعدی</li><li>مدیریت رسانه</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ==================== PORTFOLIO ==================== -->
-    <section class="section portfolio-section" id="portfolio">
-      <div class="container">
-        <div class="section-heading" data-space="1.1" data-reveal>
+    <!-- رزومه -->
+    <section class="sec" id="resume">
+      <div class="wrap">
+        <div class="sec-head rv">
           <div>
-            <p class="section-label">نمونه‌کارها</p>
-            <h2 class="section-title">پروژه‌های من</h2>
+            <p class="sec-k">رزومه</p>
+            <h2 class="sec-t">تجربه، مهارت و تحصیلات</h2>
           </div>
-          <p>
-            هشت پروژه‌ای که ساخته‌ام یا در ساختشان نقش داشته‌ام — از سامانه‌های وب با
-            پایگاه داده تا بازی و انیمیشن.
-          </p>
+          <a class="pill-btn" href="assets/resume-amirali-arjmand-lari.pdf" download>دانلود PDF</a>
         </div>
 
-        <div class="labyrinth" data-labyrinth>
-          <div class="lab-stage">
-            <p class="lab-hint">
-              <span>برای چرخاندن هزارتو بکشید</span>
-              <span>موس را روی هر نشانگر ببرید</span>
-            </p>
-            <div class="lab-panel" role="status" aria-live="polite"></div>
-          </div>
-        </div>
-
-        <p class="lab-caption">
-          هشت پروژه، هرکدام یک نشانگر رنگی در هزارتو. جزئیات کامل هر پروژه در فهرست زیر هم آمده است.
-        </p>
-
-        <div class="portfolio-grid" data-space="0.7">
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="aora">
-              <span class="project-mark" data-layer="40">آ</span>
-              <span class="project-index" aria-hidden="true">۰۱</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">سامانه‌ی وب · Next.js</span>
-              <h3>آئورا</h3>
-              <p>
-                سامانه‌ی مرجعیت‌سازی و هماهنگی فعالیت‌های علوم پایه؛ پلتفرمی سه‌وجهی با
-                نظام مسائل اساسی، شبکه‌ی متخصصان، گزارش‌دهی ماهانه و داشبورد تحلیلی.
-              </p>
-              <ul class="project-stack">
-                <li>Next.js 14</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li>
+        <div class="grid-2">
+          <div class="card rv">
+            <h3 class="card-t">تجربه‌ی حرفه‌ای</h3>
+            <div class="tl-i">
+              <h4>مدیر رسانه</h4>
+              <span class="tl-m">شرکت کسا · یک سال اخیر تا کنون</span>
+              <ul class="bullets">
+                <li>برنامه‌ریزی و مدیریت فعالیت‌های رسانه‌ای و حضور دیجیتال شرکت</li>
+                <li>تولید محتوای گرافیکی، تبلیغاتی و ویدیویی</li>
+                <li>تدوین با Premiere Pro و After Effects</li>
+                <li>مشارکت در طراحی و آماده‌سازی محتوای وب‌سایت شرکت</li>
               </ul>
-              <a class="project-link" href="https://aora.ir" target="_blank" rel="noopener">
-                aora.ir <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="charity">
-              <span class="project-mark" data-layer="40">خ</span>
-              <span class="project-index" aria-hidden="true">۰۲</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">سایت سازمانی · Vue 3</span>
-              <h3>خیریه ابوالفضل‌العباس (ع)</h3>
-              <p>
-                طراحی و راه‌اندازی سایت برای معرفی خیریه و سامان‌دهی فعالیت‌ها، مددجویان
-                و کمک‌های مردمی.
-              </p>
-              <ul class="project-stack">
-                <li>Vue 3</li><li>PHP</li><li>MySQL</li>
-              </ul>
-              <a class="project-link" href="https://aasscharity.ir" target="_blank" rel="noopener">
-                aasscharity.ir <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="domestika">
-              <span class="project-mark" data-layer="40">د</span>
-              <span class="project-index" aria-hidden="true">۰۳</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">پلتفرم آموزشی</span>
-              <h3>دامستیکا</h3>
-              <p>
-                پلتفرم آموزش خلاق فارسی با ۲۰ صفحه‌ی راست‌به‌چپ: فهرست و جزئیات دوره،
-                پخش درس، سبد خرید، پنل کاربری و پنل مدیریت با کنترل نقش.
-              </p>
-              <ul class="project-stack">
-                <li>Supabase</li><li>RLS</li><li>Edge Functions</li><li>GitHub Actions</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="resume">
-              <span class="project-mark" data-layer="40">ر</span>
-              <span class="project-index" aria-hidden="true">۰۴</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">ابزار وب</span>
-              <h3>رزومه‌استودیو</h3>
-              <p>
-                رزومه‌ساز فارسی تک‌صفحه‌ای با راهنمای مرحله‌ای، قالب‌های قابل ویرایش،
-                برش تصویر، خروجی PDF و ذخیره‌سازی ابری رزومه‌ها.
-              </p>
-              <ul class="project-stack">
-                <li>Supabase</li><li>PDF Export</li><li>GitHub Pages</li>
-              </ul>
-              <a class="project-link" href="https://aaal25882.github.io/resume-studio-fa/" target="_blank" rel="noopener">
-                مشاهده‌ی سایت <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="china">
-              <span class="project-mark" data-layer="40">چ</span>
-              <span class="project-index" aria-hidden="true">۰۵</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">سامانه‌ی نقش‌محور</span>
-              <h3>سامانه‌ی خرید از چین</h3>
-              <p>
-                واسطه‌ی میان خریدار و مسافر: ثبت سفارش، تطبیق با پرواز، تأیید مدارک
-                حمل‌کننده و قیمت‌گذاری خودکار — با دسترسی تفکیک‌شده‌ی خریدار، مسافر و مدیر.
-              </p>
-              <ul class="project-stack">
-                <li>Supabase</li><li>RLS</li><li>Storage خصوصی</li>
-              </ul>
-              <a class="project-link" href="china.html">
-                مشاهده‌ی سامانه <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="tooper">
-              <span class="project-mark" data-layer="40">ت</span>
-              <span class="project-index" aria-hidden="true">۰۶</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">بازی · متن‌باز</span>
-              <h3>بازی توپر</h3>
-              <p>
-                یک بازی رایگان و متن‌باز که برای سرگرمی ساخته شده و کد کاملش در دسترس
-                عموم است.
-              </p>
-              <ul class="project-stack">
-                <li>Game Dev</li><li>Open Source</li>
-              </ul>
-              <a class="project-link" href="https://github.com/aaal25882/tooper_game" target="_blank" rel="noopener">
-                مخزن گیت‌هاب <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="excel">
-              <span class="project-mark" data-layer="40">ا</span>
-              <span class="project-index" aria-hidden="true">۰۷</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">ابزار داده · آفلاین</span>
-              <h3>داشبورد اکسل</h3>
-              <p>
-                ابزاری کاملاً آفلاین برای بازچینش و پاک‌سازی فایل‌های اکسل؛ داده‌ی خام را
-                می‌گیرد و ساختار قابل تحلیل تحویل می‌دهد، بدون اینکه فایل جایی آپلود شود.
-              </p>
-              <ul class="project-stack">
-                <li>JavaScript</li><li>XLSX</li><li>بدون سرور</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="project-card" data-tilt data-tilt-max="7" data-reveal>
-            <span class="card-shine" aria-hidden="true"></span>
-            <div class="project-image" data-scheme="motion">
-              <span class="project-mark" data-layer="40">۳D</span>
-              <span class="project-index" aria-hidden="true">۰۸</span>
-            </div>
-            <div class="project-content">
-              <span class="project-category">بازی و انیمیشن</span>
-              <h3>بازی‌سازی و انیمیشن</h3>
-              <p>
-                ساخت دو بازی دوبعدی در Unity، انیمیشن دوبعدی با Moho، و تجربه‌ی
-                مدل‌سازی و انیمیشن سه‌بعدی با Maya.
-              </p>
-              <ul class="project-stack">
-                <li>Unity</li><li>Moho</li><li>Maya</li>
-              </ul>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== RESUME ==================== -->
-    <section class="section" id="resume">
-      <div class="container">
-        <div class="section-heading" data-space="1.1" data-reveal>
-          <div>
-            <p class="section-label">رزومه</p>
-            <h2 class="section-title">تجربه، مهارت و تحصیلات</h2>
-          </div>
-          <a class="button primary" href="assets/resume-amirali-arjmand-lari.pdf" download>
-            دانلود نسخه‌ی PDF
-          </a>
-        </div>
-
-        <div class="resume-grid" data-space="0.7">
-
-          <!-- experience -->
-          <div class="resume-block" data-tilt data-tilt-max="3" data-reveal>
-            <h3 class="resume-block-title">تجربه‌ی حرفه‌ای</h3>
-            <div class="timeline">
-              <article class="timeline-item">
-                <div class="timeline-head">
-                  <h4>مدیر رسانه</h4>
-                  <span class="timeline-meta">شرکت کسا · یک سال اخیر تا کنون</span>
-                </div>
-                <ul>
-                  <li>برنامه‌ریزی و مدیریت فعالیت‌های رسانه‌ای و حضور دیجیتال شرکت</li>
-                  <li>تولید محتوای گرافیکی، تبلیغاتی و ویدیویی</li>
-                  <li>تدوین با Premiere Pro و After Effects</li>
-                  <li>مشارکت در طراحی و آماده‌سازی محتوای وب‌سایت شرکت</li>
-                </ul>
-              </article>
             </div>
           </div>
 
-          <!-- education -->
-          <div class="resume-block" data-tilt data-tilt-max="3" data-reveal>
-            <h3 class="resume-block-title">تحصیلات و دوره‌ها</h3>
-            <div class="timeline">
-              <article class="timeline-item">
-                <div class="timeline-head">
-                  <h4>کارشناسی فیزیک</h4>
-                  <span class="timeline-meta">دانشگاه علم و صنعت ایران · کنکور سراسری</span>
-                </div>
-              </article>
-              <article class="timeline-item">
-                <div class="timeline-head">
-                  <h4>دوره‌ی برنامه‌نویسی پایتون</h4>
-                  <span class="timeline-meta">جادی</span>
-                </div>
-                <ul><li>ارتقای مهارت Python، حل مسئله و تمرین عملی برنامه‌نویسی</li></ul>
-              </article>
-              <article class="timeline-item">
-                <div class="timeline-head">
-                  <h4>دوره‌ی آموزش جاوا</h4>
-                  <span class="timeline-meta">مجتمع فنی تهران · شعبه‌ی نیاوران</span>
-                </div>
-                <ul><li>مهارت‌های لازم برای طراحی اپلیکیشن موبایل</li></ul>
-              </article>
-              <article class="timeline-item">
-                <div class="timeline-head">
-                  <h4>دوره‌ی LPIC 1</h4>
-                  <span class="timeline-meta">لینوکس و مدیریت سیستم‌عامل</span>
-                </div>
-                <ul><li>درک عمیق‌تر سیستم‌عامل و کار حرفه‌ای با لینوکس</li></ul>
-              </article>
-            </div>
+          <div class="card rv">
+            <h3 class="card-t">تحصیلات و دوره‌ها</h3>
+            <div class="tl-i"><h4>کارشناسی فیزیک</h4><span class="tl-m">دانشگاه علم و صنعت ایران · کنکور سراسری</span></div>
+            <div class="tl-i"><h4>دوره‌ی برنامه‌نویسی پایتون</h4><span class="tl-m">جادی</span></div>
+            <div class="tl-i"><h4>دوره‌ی آموزش جاوا</h4><span class="tl-m">مجتمع فنی تهران · نیاوران</span></div>
+            <div class="tl-i"><h4>دوره‌ی LPIC 1</h4><span class="tl-m">لینوکس و مدیریت سیستم‌عامل</span></div>
           </div>
 
-          <!-- skills -->
-          <div class="resume-block resume-block-wide" data-tilt data-tilt-max="3" data-reveal>
-            <h3 class="resume-block-title">مهارت‌ها</h3>
-            <div class="skill-groups">
-              <div class="skill-group">
+          <div class="card card-wide rv">
+            <h3 class="card-t">مهارت‌ها</h3>
+            <div class="skills-3">
+              <div>
                 <h4>برنامه‌نویسی و وب</h4>
-                <div class="skills">
-                  <span>Web Development</span><span>WordPress</span><span>Python</span>
-                  <span>Unity</span><span>Android Studio</span>
-                </div>
+                <ul class="chips"><li>Web Development</li><li>WordPress</li><li>Python</li><li>Unity</li><li>Android Studio</li></ul>
               </div>
-              <div class="skill-group">
+              <div>
                 <h4>طراحی و تدوین <em>حرفه‌ای</em></h4>
-                <div class="skills">
-                  <span>After Effects</span><span>Illustrator</span><span>Photoshop</span>
-                  <span>Premiere Pro</span>
-                </div>
+                <ul class="chips"><li>After Effects</li><li>Illustrator</li><li>Photoshop</li><li>Premiere Pro</li></ul>
               </div>
-              <div class="skill-group">
+              <div>
                 <h4>انیمیشن</h4>
-                <div class="skills">
-                  <span>2D Animation</span><span>Maya</span><span>Moho</span>
-                </div>
+                <ul class="chips"><li>2D Animation</li><li>Maya</li><li>Moho</li></ul>
               </div>
             </div>
           </div>
 
-          <!-- honors -->
-          <div class="resume-block resume-block-wide" data-tilt data-tilt-max="3" data-reveal>
-            <h3 class="resume-block-title">افتخارات</h3>
+          <div class="card card-wide rv">
+            <h3 class="card-t">افتخارات</h3>
             <div class="honors">
-              <article class="honor-card">
-                <span class="honor-rank">رتبه ۱</span>
-                <div>
-                  <h4>مسابقات کشوری رباتیک</h4>
-                  <p>ربات تعقیب خط — رتبه‌ی اول کشوری</p>
-                </div>
-              </article>
-              <article class="honor-card">
-                <span class="honor-rank">رتبه ۳</span>
-                <div>
-                  <h4>مسابقات اذان تهران</h4>
-                  <p>دو سال متوالی — رتبه‌ی سوم استان تهران</p>
-                </div>
-              </article>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CONTACT ==================== -->
-    <section class="section" id="contact">
-      <div class="container" data-space="0.9">
-        <div class="contact-card" data-tilt data-tilt-max="4" data-reveal>
-          <span class="card-shine" aria-hidden="true"></span>
-          <div>
-            <p class="section-label">ارتباط با من</p>
-            <h2 class="section-title">برای همکاری در تماس باشید</h2>
-            <p>
-              برای پروژه‌های توسعه‌ی وب، طراحی گرافیک، تدوین یا انیمیشن در دسترسم.
-              سریع‌ترین راه، ایمیل است.
-            </p>
-
-            <div class="contact-list">
-              <a class="contact-item" href="mailto:aaal25882@gmail.com">
-                <span class="contact-icon" aria-hidden="true">✉</span>
-                <span class="contact-copy">
-                  <small>ایمیل</small>
-                  <strong>aaal25882@gmail.com</strong>
-                </span>
-              </a>
-              <a class="contact-item" href="tel:+989194702781">
-                <span class="contact-icon" aria-hidden="true">☎</span>
-                <span class="contact-copy">
-                  <small>تلفن</small>
-                  <strong>۰۹۱۹۴۷۰۲۷۸۱</strong>
-                </span>
-              </a>
-              <div class="contact-item is-static">
-                <span class="contact-icon" aria-hidden="true">⌖</span>
-                <span class="contact-copy">
-                  <small>شهر</small>
-                  <strong>سیرجان، ایران</strong>
-                </span>
+              <div class="honor">
+                <b>رتبه ۱</b>
+                <div><h4>مسابقات کشوری رباتیک</h4><p>ربات تعقیب خط — رتبه‌ی اول کشوری</p></div>
+              </div>
+              <div class="honor">
+                <b>رتبه ۳</b>
+                <div><h4>مسابقات اذان تهران</h4><p>دو سال متوالی — رتبه‌ی سوم استان تهران</p></div>
               </div>
             </div>
           </div>
-
-          <div class="contact-actions">
-            <a class="button primary" href="mailto:aaal25882@gmail.com">ارسال ایمیل</a>
-            <a class="button secondary" href="assets/resume-amirali-arjmand-lari.pdf" download>دانلود رزومه</a>
-          </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <p>© <span id="year"></span> امیرعلی ارجمند لاری — تمامی حقوق محفوظ است.</p>
-      <a href="#home">بازگشت به بالا ↑</a>
-    </div>
-  </footer>
+    <!-- تماس -->
+    <section class="sec sec-contact" id="contact">
+      <div class="wrap">
+        <p class="sec-k rv">ارتباط با من</p>
+        <h2 class="sec-t rv">بیایید چیزی بسازیم</h2>
+        <p class="sec-p rv">برای پروژه‌های توسعه‌ی وب، طراحی گرافیک، تدوین یا انیمیشن در دسترسم. سریع‌ترین راه، ایمیل است.</p>
 
-  <script src="js/common.js"></script>
-  <script>
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        const nav = document.querySelector('.nav-links');
-        const toggle = document.querySelector('.menu-toggle');
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-    document.getElementById('year').textContent = new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
-  </script>
-  <script src="js/space-3d.js"></script>
-  <script src="js/labyrinth.js"></script>
+        <div class="contact-row rv">
+          <a class="c-item" href="mailto:aaal25882@gmail.com"><small>ایمیل</small><b>aaal25882@gmail.com</b></a>
+          <a class="c-item" href="tel:+989194702781"><small>تلفن</small><b>۰۹۱۹۴۷۰۲۷۸۱</b></a>
+          <div class="c-item"><small>شهر</small><b>سیرجان، ایران</b></div>
+        </div>
+
+        <footer class="foot rv">
+          <span>© <span id="yr"></span> امیرعلی ارجمند لاری</span>
+          <a href="#top">بازگشت به بالا ↑</a>
+        </footer>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ منوی موبایل ============ -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <div class="sheet" id="mobileMenu" hidden>
+    <a class="sheet-link is-active" href="#top" aria-current="page">خانه</a>
+    <a class="sheet-link" href="#work">پروژه‌ها</a>
+    <a class="sheet-link" href="#about">درباره</a>
+    <a class="sheet-link" href="#resume">رزومه</a>
+    <a class="sheet-link" href="#contact">تماس</a>
+    <a class="sheet-signin" href="assets/resume-amirali-arjmand-lari.pdf" download>دانلود رزومه</a>
+  </div>
+
+  <script src="js/site.js"></script>
 </body>
 </html>
