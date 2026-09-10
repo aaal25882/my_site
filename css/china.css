@@ -139,3 +139,22 @@ html[data-theme="light"] .discount-preview strong { color: #111827; }
 html[data-theme="light"] .hidden-product { border-color: #ffffff; }
 html[data-theme="light"] .calculator-section,
 html[data-theme="light"] .game-section { background: linear-gradient(180deg, rgba(63,81,215,.035), rgba(35,185,135,.025)); }
+
+/* Private dynamic quote */
+.private-quote-layout { align-items: start; }
+.private-formula-note { display: grid; gap: 7px; }
+.private-formula-note span { color: var(--muted); line-height: 1.9; }
+.smart-quote-form .full-field { grid-column: 1 / -1; }
+.quote-status { margin: 14px 0 0; min-height: 28px; color: var(--muted); font-size: .9rem; }
+.quote-status.loading { color: var(--primary); }
+.quote-status.success { color: var(--success, #15805d); }
+.quote-status.error { color: var(--danger, #b42335); }
+.private-quote-result { margin-top: 12px; text-align: center; display: grid; gap: 8px; padding: 22px; }
+.private-quote-result[hidden] { display: none; }
+.private-quote-result > span { color: var(--muted); }
+.private-quote-result > strong { color: var(--primary); font-size: clamp(1.55rem, 4vw, 2.35rem); }
+.private-quote-result small { color: var(--muted); }
+html[data-theme="light"] .private-formula-note { background: #eef2ff; border-color: #ced5ff; color: #1f2d74; }
+html[data-theme="light"] .private-quote-result { background: #fff; border-color: rgba(17,24,39,.13); }
+html[data-theme="dark"] .private-formula-note { background: rgba(75,91,215,.12); border-color: rgba(126,139,255,.24); }
+html[data-theme="dark"] .private-quote-result { background: rgba(15,23,42,.72); }

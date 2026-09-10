@@ -76,3 +76,7 @@ https://iowhgknspzchsywanlrl.supabase.co/auth/v1/callback
 مدارک حمل‌کنندگان در Storage خصوصی با نام `traveler-documents` ذخیره می‌شوند. فقط صاحب مدرک و مدیر امکان مشاهده فایل را دارند.
 
 پس از جایگزینی فایل‌ها، محتوای جدید `supabase/schema.sql` را دوباره در SQL Editor اجرا کنید. اجرای موفق پیام `Success. No rows returned` نشان می‌دهد.
+
+
+## Silent order pricing
+The public calculator UI was removed. Pricing now runs silently during order submission through `js/order-pricing.js`, while the final amount remains hidden from buyers until the order reaches an approved workflow status.

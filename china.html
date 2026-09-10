@@ -37,7 +37,7 @@
     </button>
     <nav class="nav-links" aria-label="منوی سرویس">
       <a href="#how-it-works">نحوه کار</a>
-      <a href="#calculator">محاسبه سود</a>
+      <a href="dashboard.html">ثبت سفارش</a>
       <a href="#shopping-game">بازی خرید</a>
       <a href="#trust">اعتماد و امنیت</a>
       <a href="index.html">درباره سازنده</a>
@@ -63,7 +63,7 @@
         <div class="trust-points">
           <span>✓ احراز ایمیل یا گوگل</span>
           <span>✓ تأیید دستی مسافران</span>
-          <span>✓ محاسبه شفاف کارمزد</span>
+          <span>✓ اعلام هزینه نهایی پس از بررسی</span>
         </div>
       </div>
       <aside class="route-card" aria-label="نمایش روند سفارش">
@@ -98,59 +98,6 @@
           <a href="auth.html?role=traveler">ثبت درخواست همکاری ←</a>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="section calculator-section" id="calculator" data-reveal>
-    <div class="container calculator-layout">
-      <div>
-        <p class="section-label">کارمزد پویا</p>
-        <h2 class="section-title">۴ درصد همیشه منصفانه نیست</h2>
-        <p class="calculator-intro">
-          کارمزد پیشنهادی از بیشترین مقدار میان درصد ارزش کالا، سهم وزنی هزینه سفر
-          و حداقل کارمزد سفارش انتخاب می‌شود. این محاسبه فقط برآورد اولیه است.
-        </p>
-        <div class="formula-note">
-          <strong>منطق نسخه اولیه:</strong>
-          <code>کارمزد = بیشینه‌(۴٪ ارزش کالا، سهم وزنی هدف درآمد سفر، حداقل کارمزد)</code>
-        </div>
-      </div>
-
-      <form class="profit-calculator" id="profit-calculator">
-        <div class="field-grid">
-          <label>ارزش کالا (تومان)
-            <input id="product-price" type="number" min="0" step="100000" value="20000000" required>
-          </label>
-          <label>وزن قابل محاسبه کالا (کیلوگرم)
-            <input id="order-weight" type="number" min="0.1" step="0.1" value="2" required>
-          </label>
-          <label>هزینه رفت‌وبرگشت سفر (تومان)
-            <input id="ticket-cost" type="number" min="0" step="1000000" value="100000000" required>
-          </label>
-          <label>ظرفیت قابل استفاده بار (کیلوگرم)
-            <input id="usable-capacity" type="number" min="1" step="1" value="50" required>
-          </label>
-          <label>سهم هدف از جبران هزینه سفر
-            <select id="recovery-rate">
-              <option value="0.25">۲۵ درصد</option>
-              <option value="0.4" selected>۴۰ درصد</option>
-              <option value="0.6">۶۰ درصد</option>
-              <option value="1">۱۰۰ درصد</option>
-            </select>
-          </label>
-          <label>حداقل کارمزد سفارش (تومان)
-            <input id="minimum-fee" type="number" min="0" step="100000" value="500000" required>
-          </label>
-        </div>
-        <button class="button primary full-button" type="submit">محاسبه کارمزد پیشنهادی</button>
-
-        <div class="calculator-result" aria-live="polite">
-          <div><span>۴٪ ارزش کالا</span><strong id="percent-fee">—</strong></div>
-          <div><span>سهم وزنی هزینه سفر</span><strong id="weight-fee">—</strong></div>
-          <div class="recommended"><span>کارمزد پیشنهادی مسافر</span><strong id="recommended-fee">—</strong></div>
-          <small id="calculator-explanation"></small>
-        </div>
-      </form>
     </div>
   </section>
 
@@ -221,8 +168,9 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
 <script src="js/common.js"></script>
-<script src="js/profit-calculator.js"></script>
 <script src="js/china-interactions.js"></script>
   <script src="js/ui-motion.js"></script>
 </body>

@@ -128,10 +128,22 @@
             <label>نام کالا<input id="order-title" required></label>
             <label>لینک محصول<input id="order-url" type="url"></label>
             <label>تعداد<input id="order-quantity" type="number" min="1" value="1" required></label>
-            <label>وزن تقریبی (کیلوگرم)<input id="order-weight" type="number" min="0" step="0.01"></label>
+            <label>قیمت کالا به یوان<input id="order-price-cny" type="number" min="1" step="0.01" required></label>
+            <label>دسته‌بندی کالا
+              <select id="order-category" required>
+                <option value="keyboard">کیبورد</option>
+                <option value="controller">دسته بازی</option>
+                <option value="laptop">لپ‌تاپ</option>
+                <option value="phone">گوشی موبایل</option>
+                <option value="tablet">تبلت</option>
+                <option value="headphone">هدفون</option>
+                <option value="accessory">لوازم جانبی کوچک</option>
+                <option value="manual">وزن دستی</option>
+              </select>
+            </label>
+            <label id="order-weight-wrap" hidden>وزن کل سفارش (کیلوگرم)<input id="order-weight" type="number" min="0.05" step="0.01"></label>
             <label>رنگ<input id="order-color"></label>
             <label>مدل<input id="order-model"></label>
-            <label>قیمت تقریبی<input id="order-price" type="number" min="0" step="0.01"></label>
             <label>شهر تحویل در ایران<input id="order-destination"></label>
             <label class="full-width">توضیحات<textarea id="order-notes" rows="3"></textarea></label>
           </div>
@@ -181,6 +193,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-config.js"></script>
+  <script src="js/order-pricing.js"></script>
   <script src="js/dashboard.js"></script>
   <script src="js/ui-motion.js"></script>
 </body>

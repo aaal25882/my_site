@@ -139,12 +139,53 @@ async function loadOrders() { const { data, error } = await supabaseClient.from(
 function renderOrders() {
   const list = $("#orders-list");
   if (!state.orders.length) { list.innerHTML = '<div class="empty-state">هنوز سفارشی برای نمایش وجود ندارد.</div>'; return; }
-  list.innerHTML = state.orders.map(order => `<article class="data-card"><div class="data-card-head"><div><h3>${escapeHtml(order.title)}</h3><span>${formatDate(order.created_at)}</span></div><span class="status-pill">${orderStatusLabels[order.status] || order.status}</span></div><div class="data-meta"><span>تعداد: ${formatNumber(order.quantity)}</span><span>وزن: ${formatNumber(order.weight_kg)} کیلو</span><span>قیمت تقریبی: ${formatNumber(order.estimated_price)}</span><span>مقصد: ${escapeHtml(order.destination_city || "—")}</span></div>${order.product_url ? `<a class="text-link" target="_blank" rel="noopener" href="${escapeHtml(order.product_url)}">مشاهده لینک محصول</a>` : ""}${order.notes ? `<p>${escapeHtml(order.notes)}</p>` : ""}</article>`).join("");
+  const approvedStatuses = new Set(["matched", "purchased", "in_transit", "delivered"]);
+  list.innerHTML = state.orders.map(order => {
+    const price = approvedStatuses.has(order.status) && order.estimated_price
+      ? `<span>هزینه تأییدشده: ${formatNumber(order.estimated_price)} تومان</span>`
+      : `<span>هزینه: پس از بررسی اعلام می‌شود</span>`;
+    const weight = order.weight_kg ? `<span>وزن: ${formatNumber(order.weight_kg)} کیلو</span>` : "";
+    return `<article class="data-card"><div class="data-card-head"><div><h3>${escapeHtml(order.title)}</h3><span>${formatDate(order.created_at)}</span></div><span class="status-pill">${orderStatusLabels[order.status] || order.status}</span></div><div class="data-meta"><span>تعداد: ${formatNumber(order.quantity)}</span>${weight}${price}<span>مقصد: ${escapeHtml(order.destination_city || "—")}</span></div>${order.product_url ? `<a class="text-link" target="_blank" rel="noopener" href="${escapeHtml(order.product_url)}">مشاهده لینک محصول</a>` : ""}${order.notes ? `<p>${escapeHtml(order.notes)}</p>` : ""}</article>`;
+  }).join("");
 }
 async function createOrder(event) {
-  event.preventDefault(); const message = $("#order-message"); setMessage(message, "در حال ثبت سفارش...");
-  const payload = { buyer_id: state.profile.id, title: $("#order-title").value.trim(), product_url: $("#order-url").value.trim() || null, quantity: Number($("#order-quantity").value), weight_kg: $("#order-weight").value || null, color: $("#order-color").value.trim() || null, model: $("#order-model").value.trim() || null, estimated_price: $("#order-price").value || null, destination_city: $("#order-destination").value.trim() || null, notes: $("#order-notes").value.trim() || null };
-  const { error } = await supabaseClient.from("orders").insert(payload); if (error) return setMessage(message, error.message, "error"); event.target.reset(); $("#order-quantity").value = "1"; setMessage(message, "سفارش ثبت شد.", "success"); await loadOrders();
+  event.preventDefault();
+  const message = $("#order-message");
+  setMessage(message, "در حال ثبت سفارش...");
+
+  const category = $("#order-category").value;
+  const quantity = Number($("#order-quantity").value);
+  const productPriceCny = Number($("#order-price-cny").value);
+  const manualWeightKg = category === "manual" ? Number($("#order-weight").value) : null;
+  if (category === "manual" && (!manualWeightKg || manualWeightKg <= 0)) {
+    return setMessage(message, "وزن کل سفارش را وارد کنید.", "error");
+  }
+
+  const quote = await window.OrderPricing?.getEstimate({ productPriceCny, quantity, category, manualWeightKg });
+  const payload = {
+    buyer_id: state.profile.id,
+    title: $("#order-title").value.trim(),
+    product_url: $("#order-url").value.trim() || null,
+    quantity,
+    weight_kg: manualWeightKg || null,
+    color: $("#order-color").value.trim() || null,
+    model: $("#order-model").value.trim() || null,
+    estimated_price: quote?.totalToman || null,
+    destination_city: $("#order-destination").value.trim() || null,
+    notes: $("#order-notes").value.trim() || null,
+    product_price_cny: productPriceCny,
+    product_category: category,
+    manual_weight_kg: manualWeightKg,
+  };
+
+  const { error } = await supabaseClient.from("orders").insert(payload);
+  if (error) return setMessage(message, error.message, "error");
+  event.target.reset();
+  $("#order-quantity").value = "1";
+  $("#order-weight-wrap").hidden = true;
+  $("#order-weight").required = false;
+  setMessage(message, "سفارش ثبت شد. هزینه نهایی پس از بررسی و تأیید اعلام می‌شود.", "success");
+  await loadOrders();
 }
 
 async function loadFlights() { const { data, error } = await supabaseClient.from("flights").select("*").order("departure_date", { ascending: true }); if (error) throw error; state.flights = data || []; renderFlights(); }
@@ -207,6 +248,12 @@ function renderAdminFlights(flights) { $("#admin-flights").innerHTML = flights.m
 function setupAdminTabs() { $$(".admin-tabs button").forEach(button => button.addEventListener("click", () => { $$(".admin-tabs button").forEach(b => b.classList.toggle("active", b === button)); $$(".admin-panel").forEach(p => p.classList.toggle("active", p.id === `admin-${button.dataset.adminTab}`)); })); }
 function setupActions() {
   $("#profile-form").addEventListener("submit", saveProfile); $("#order-form").addEventListener("submit", createOrder); $("#flight-form").addEventListener("submit", createFlight);
+  $("#order-category").addEventListener("change", (event) => {
+    const manual = event.target.value === "manual";
+    $("#order-weight-wrap").hidden = !manual;
+    $("#order-weight").required = manual;
+    if (!manual) $("#order-weight").value = "";
+  });
   $("#new-order-toggle").addEventListener("click", () => $("#order-form").hidden = !$("#order-form").hidden);
   $("#new-flight-toggle").addEventListener("click", () => $("#flight-form").hidden = !$("#flight-form").hidden);
   $("#logout-button").addEventListener("click", async () => { await supabaseClient.auth.signOut(); location.replace("auth.html"); });
