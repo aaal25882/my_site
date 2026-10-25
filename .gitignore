@@ -4,3 +4,6 @@
 # فایل‌های سیستمی
 .DS_Store
 Thumbs.db
+
+# گراف graphify — کامیت نمی‌شود
+graphify-out/

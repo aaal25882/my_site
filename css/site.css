@@ -493,6 +493,34 @@ img, video { display: block; max-width: 100%; }
   transition: opacity 0.2s ease;
 }
 .work-link:hover { opacity: 0.75; }
+.work-links { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+
+/* عنوان هر گروه پروژه — اکوسیستم آئورا، کارهای دیگر */
+.works-g {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 44px 0 18px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.works-g:first-of-type { margin-top: 0; }
+.works-g small { color: var(--muted); font-size: 13px; font-weight: 400; }
+
+/* پروژه‌ی در دست ساخت: قاب خط‌چین و برچسب «به‌زودی» */
+.work.is-soon { border-style: dashed; background: rgba(255, 255, 255, 0.02); }
+.work-soon {
+  position: absolute;
+  top: 24px;
+  left: 22px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--c) 60%, transparent);
+  color: var(--c);
+  font-size: 12px;
+  font-weight: 700;
+}
 
 /* ---- درباره ---- */
 .body-p { color: #b9b9ba; margin-bottom: 16px; max-width: 66ch; }
